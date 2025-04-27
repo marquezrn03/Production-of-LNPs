@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Short Guide to Lignin Nanoparticle Synthesis Methods</title>
+    <title>PhD Masterclass: Lignin Nanoparticles - Synthesis, Fractionation, and Emulsion Stabilization</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }, svg: { fontCache: 'global' } };
@@ -20,7 +20,7 @@
             --bg-light: #fdfbf7; --bg-white: #ffffff;
             --border-color: #eab308; --border-light: #fde68a; --border-medium: #fcd34d;
             --accent-blue: #3b82f6; --accent-blue-light: #bfdbfe;
-            --oil-color-light: #f3f4f6; --oil-color: #e5e7eb;
+            --oil-color-light: #f3f4f6; --oil-color: #e5e7eb; --oil-drop-color: #fef08a;
         }
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; background-color: var(--bg-light); color: var(--text-color); }
         label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--text-color); font-size: 0.9rem; }
@@ -94,146 +94,43 @@
         tbody tr:nth-child(odd) td { background-color: #fefcf9; }
         td ul { padding-left: 1.2rem; margin-bottom: 0; }
         td li { font-size: 0.95rem; margin-bottom: 0.3rem; }
+        .emulsion-sim-area { width: 100%; height: 200px; background-color: var(--accent-blue-light); border: 1px solid var(--accent-blue); border-radius: 0.5rem; position: relative; overflow: hidden; }
+        .emulsion-droplet { position: absolute; background-color: var(--oil-drop-color); border: 1px solid var(--secondary-color); border-radius: 50%; display: flex; justify-content: center; align-items: center; transition: width 0.3s ease, height 0.3s ease, transform 0.3s ease; }
+        .emulsion-lnp { position: absolute; width: 3px; height: 3px; background-color: var(--primary-color); border-radius: 50%; transform: translate(-50%, -50%); }
+        .dlvo-plot-container { width: 100%; height: 250px; background-color: #f9fafb; border: 1px solid #e5e7eb; border-radius: 0.5rem; position: relative; margin-top: 1rem; padding: 1rem; }
+        .dlvo-axis { position: absolute; background-color: #9ca3af; }
+        .dlvo-x-axis { bottom: 20px; left: 20px; width: calc(100% - 40px); height: 1px; }
+        .dlvo-y-axis { bottom: 20px; left: 20px; width: 1px; height: calc(100% - 40px); }
+        .dlvo-curve { fill: none; stroke: var(--primary-color); stroke-width: 2px; }
+        .dlvo-zero-line { stroke: #cbd5e1; stroke-width: 1px; stroke-dasharray: 4 2; }
+        .dlvo-label { position: absolute; font-size: 0.75rem; color: var(--text-light); }
+        .dlvo-x-label { bottom: 2px; left: 50%; transform: translateX(-50%); }
+        .dlvo-y-label { left: 2px; top: 50%; transform: translateY(-50%) rotate(-90deg); transform-origin: left top; }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800 antialiased">
     <header class="bg-gradient-to-r from-yellow-600 via-amber-600 to-yellow-700 text-white shadow-lg sticky top-0 z-50">
         <div class="container mx-auto px-8 py-6">
-             <h1 class="text-3xl md:text-4xl font-bold">A Short Guide to Lignin Nanoparticle Synthesis</h1>
-            <p class="text-xl font-semibold mt-2">Solvent Exchange, Templating & Aerosol Methods</p>
+             <h1 class="text-3xl md:text-4xl font-bold">PhD Masterclass: Comprehensive Guide to Lignin Nanoparticle Synthesis & Emulsion Stabilization</h1>
+            <p class="text-xl font-semibold mt-2">Source Material, Synthesis Methods, Pickering Emulsions & Applications</p>
         </div>
     </header>
     <main class="container mx-auto px-8 py-12">
         <section id="intro" class="mb-16 p-8 rounded-lg shadow-xl section-bg-white">
-            <h2 >Introduction: From Bulk Polymer to Functional Nanomaterial</h2>
-            <p>Lignin, nature's intricate aromatic polymer, presents both a challenge and a profound opportunity. Its inherent heterogeneity and complex structure make controlled processing difficult, yet its abundance and intrinsic properties make it an ideal candidate for creating sustainable, high-value nanomaterials. This guide focuses on transforming bulk lignin into Lignin Nanoparticles (LNPs) using diverse synthesis strategies.</p>
-            <p>We will cover five key approaches: <strong>dialysis</strong> (Method 1), <strong>rapid precipitation (L→W)</strong> (Method 2), <strong>acid precipitation from high pH</strong> (Method 3), <strong>W/O microemulsion templating</strong> (Method 4), and <strong>aerosol flow reaction</strong> (Method 5). Detailed protocols are provided, alongside discussions on the critical role of process dynamics, templating, drying kinetics, and importantly, the influence of the starting lignin's inherent heterogeneity and potential <strong>fractionation</strong>. Understanding these differences is paramount for rational design and optimization.</p>
+            <h2 >Introduction: From Bulk Polymer to Functional Colloidal Systems</h2>
+            <p>Lignin, nature's intricate aromatic polymer, presents both a challenge and a profound opportunity. Its inherent heterogeneity and complex structure make controlled processing difficult, yet its abundance and intrinsic properties make it an ideal candidate for creating sustainable, high-value nanomaterials. This masterclass focuses on transforming bulk lignin into Lignin Nanoparticles (LNPs) using diverse synthesis strategies and subsequently utilizing these particles as stabilizers for Pickering emulsions.</p>
+            <p>We will cover five key LNP synthesis approaches: <strong>acid precipitation from high pH</strong> (Method 1), <strong>rapid precipitation (L→W)</strong> (Method 2), <strong>dialysis</strong> (Method 3), <strong>W/O microemulsion templating</strong> (Method 4), and <strong>aerosol flow reaction</strong> (Method 5). Detailed protocols are provided, alongside discussions on the critical role of process dynamics, templating, drying kinetics, and importantly, the influence of the starting lignin's inherent heterogeneity and potential <strong>fractionation</strong>. We will then delve into the principles and practice of forming LNP-stabilized Pickering emulsions, exploring how LNP properties and processing conditions dictate emulsion characteristics. Understanding this entire cascade—from lignin source to final emulsion properties—is paramount for rational design and innovation.</p>
         </section>
-        
-        <section id="principle" class="mb-16 p-8 rounded-lg shadow-lg section-bg-light">
-            <h2 >Underlying Science: Driving Forces & Mechanisms</h2>
-            <p>LNP formation relies on inducing controlled phase separation, templated solidification, or rapid drying.</p>
-            <ol class="list-decimal list-inside pl-4 space-y-4">
-                <li><strong>Solubility & Solvent Quality Change (Methods 1, 2, 3):</strong> Lignin solubility depends on structure/solvent ($\Delta G_{mix} < 0$ in good solvent). Poor solvent (water) or pH change reduces quality ($\Delta G_{mix} > 0$), driving aggregation.</li>
-                 <li><strong>Microemulsion Templating (Method 4):</strong> Uses stable W/O microemulsions. Nanoscale aqueous droplets with lignin act as templates. Solidification via cross-linking preserves size/shape.</li>
-                 <li><strong>Aerosol Atomization & Drying (Method 5):</strong> Atomized lignin solution droplets dry rapidly in heated reactor. Lignin solidifies within shrinking droplet. Kinetics governed by heat/mass transfer.</li>
-                <li><strong>Solvent/pH Exchange/Drying Rates:</strong> Dialysis (1) = slow diffusion. Rapid Precipitation (2) = fast mixing. pH Change (3) = depends on rate. Aerosol (5) = fast drying.</li>
-                <li><strong>Nucleation & Growth vs. Templating vs. Drying Kinetics:</strong> Methods 1, 2, 3: Supersaturation $\rightarrow$ nucleation $\rightarrow$ growth/aggregation. Method 4: Template size + cross-linking kinetics. Method 5: Precipitation within shrinking droplet. Fractionation affects nucleation/growth in Methods 1, 2, 3.</li>
-                <li><strong>Colloidal Stabilization:</strong> Formed LNPs need stability (electrostatic/steric, DLVO). Crucial post-synthesis. Method 4 uses surfactants; Method 5 needs redispersion. Fractionation impacts surface properties/stability.</li>
-            </ol>
-        </section>
-        <section id="dialysis-proc" class="mb-16 p-8 rounded-lg shadow-lg section-bg-white">
-            <h2 >Method 1: Detailed Protocol - LNP Synthesis via Dialysis</h2>
-            <p>Controlled solvent exchange via dialysis, based on <a href="https://doi.org/10.1039/C5GC01431E" target="_blank" rel="noopener noreferrer">Lievonen et al. (2015/2016)</a>. Suitable for unfractionated or fractionated lignin.</p>
-            <h3>1.1 Materials & Reagents</h3>
-             <ul class="list-disc list-inside pl-4 mb-6 text-sm space-y-2"><li><strong>Lignin Source:</strong> e.g., Kraft Lignin (whole or fractionated E/A/T-Frac). Characterized/dried.</li><li><strong>Organic Solvent:</strong> THF (or EG for variation).</li><li><strong>Non-Solvent:</strong> DI Water/Milli-Q.</li><li><strong>Dialysis Membrane:</strong> RC tubing, MWCO 12-14 kDa.</li></ul>
-            <h3>1.2 Equipment</h3>
-             <ul class="list-disc list-inside pl-4 mb-6 text-sm space-y-2"><li>Standard lab equipment as previously listed.</li></ul>
-            <h3>1.3 Procedure</h3>
-              <ol class="list-decimal list-inside pl-6 space-y-4"><li><strong>Lignin Solution (e.g., 5 mg/mL):</strong> Prepare filtered solution of chosen lignin (whole/fraction) in THF.</li><li><strong>Membrane Prep:</strong> Rinse/soak RC tubing.</li><li><strong>Loading:</strong> Clamp end 1. Add 10.0 mL solution. Clamp end 2. Check seals. Rinse outside.</li><li><strong>Dialysis:</strong> Submerge bag in ~1.5 L DI water. Gentle stirring (100-150 rpm). Water changes (Total 48-72h). Observe turbidity.</li><li><strong>Collection:</strong> Collect dispersion. Store 4°C.</li><li><strong>Characterization:</strong> DLS/Zeta.</li></ol>
-              <div class="critical-note"><strong>Variations & Notes:</strong>
-                <ul><li><strong>Frangville et al. (2012, Method A):</strong> Precipitate lignin from ethylene glycol (EG) with slow HCl addition, then dialyze. Optional cross-linking.</li><li><strong>Richter et al. (2016):</strong> Flash precipitate Indulin AT from EG with rapid HNO$_3$ addition. Monitor growth kinetics in EG over time (e.g., 0-4h at controlled temp) *before* quenching growth by dilution with water.</li><li><strong>Fractionation Impact (Venditti et al. 2021):</strong> Using E-Frac, A-Frac, or T-Frac yields significantly different LNP size/stability compared to whole KL.</li></ul></div>
-              <div class="safety-note"><strong>Safety:</strong> THF flammable/irritant. EG requires care. Use fume hood.</li>
-        </section>
-        <section id="precipitation-lw-proc" class="mb-16 p-8 rounded-lg shadow-lg section-bg-white">
-            <h2 >Method 2: Detailed Protocol - LNP Synthesis via Rapid Precipitation (Lignin → Water)</h2>
-            <p>Rapid addition of lignin solution to non-solvent. Fast, less controlled. Suitable for various lignins/solvents and fractions thereof.</p>
-             <h3>2.1 Materials & Reagents</h3>
-             <ul class="list-disc list-inside pl-4 mb-6 text-sm space-y-2"><li><strong>Lignin Source:</strong> e.g., Kraft, HPL (whole or fractionated E/A/T-Frac).</li><li><strong>Organic Solvent:</strong> e.g., THF, Acetone, Ethanol.</li><li><strong>Non-Solvent:</strong> DI Water/Milli-Q.</li></ul>
-            <h3>2.2 Equipment</h3>
-             <ul class="list-disc list-inside pl-4 mb-6 text-sm space-y-2"><li>Standard lab equipment. Syringe pump useful for rate control.</li></ul>
-            <h3>2.3 Procedure</h3>
-              <ol class="list-decimal list-inside pl-6 space-y-4"><li><strong>Lignin Solution:</strong> Prepare filtered solution (e.g., 0.5-10 g/L or 0.1-3 wt%).</li><li><strong>Non-Solvent Bath:</strong> Place water in beaker (e.g., 10:1 ratio). Vigorous stirring (>700 rpm).</li><li><strong>Rapid Addition:</strong> Inject lignin solution rapidly into stirred water. Control rate (1-1100 mL/min) to influence size (<a href="https://doi.org/10.1021/acs.langmuir.6b01088" target="_blank" rel="noopener noreferrer">Richter et al. 2016</a>). Observe turbidity.</li><li><strong>Solvent Evaporation:</strong> Leave stirring uncovered in fume hood to evaporate organic solvent.</li><li><strong>Collection:</strong> Transfer dispersion. Store 4°C.</li><li><strong>Characterization:</strong> DLS/Zeta. Size tunable by conc./rate. Morphology/stability depends strongly on lignin fraction used (<a href="https://doi.org/10.1039/d0gc03632c" target="_blank" rel="noopener noreferrer">Venditti et al. 2021</a>).</li></ol>
-              <div class="critical-note"><strong>Challenge:</strong> Rapid kinetics sensitive to mixing, rate, temp, conc., lignin fraction. Stabilization critical.</li>
-               <div class="safety-note"><strong>Safety Reminder:</strong> Handle organic solvents in fume hood.</li>
-        </section>
-        <section id="precipitation-ph-proc" class="mb-16 p-8 rounded-lg shadow-lg section-bg-white">
-            <h2 >Method 3: Detailed Protocol - LNP Synthesis via Acid Precipitation from High pH</h2>
-            <p>Aqueous route yielding pH-sensitive LNPs, based on Method B by <a href="https://doi.org/10.1002/cphc.201200537" target="_blank" rel="noopener noreferrer">Frangville et al. (2012)</a>.</p>
-             <h3>3.1 Materials & Reagents</h3>
-             <ul class="list-disc list-inside pl-4 mb-6 text-sm space-y-2"><li><strong>Lignin Source:</strong> Low-sulfonated Kraft Lignin.</li><li><strong>Base:</strong> 1 M NaOH.</li><li><strong>Acid:</strong> 0.25 M HNO$_3$.</li><li><strong>Water:</strong> DI Water/Milli-Q.</li></ul>
-            <h3>3.2 Equipment</h3>
-             <ul class="list-disc list-inside pl-4 mb-6 text-sm space-y-2"><li>Standard lab equipment + pH meter.</li></ul>
-            <h3>3.3 Procedure</h3>
-              <ol class="list-decimal list-inside pl-6 space-y-4"><li><strong>High-pH Stock (~7.7 wt%):</strong> Dissolve lignin in water by gradually adding 1 M NaOH to pH ~11.4-11.5.</li><li><strong>Working Solution (~0.05 wt%):</strong> Dilute stock with water.</li><li><strong>Acid Precipitation:</strong> Stir working solution. Rapidly add calculated acid volume (e.g., 0.9mL 0.25M HNO$_3$ per 10mL). Final pH ~2.</li><li><strong>Collection/(Opt.) Washing:</strong> Store low-pH dispersion at 4°C. Opt. washing via centrifugation/resuspension.</li><li><strong>Characterization:</strong> DLS/Zeta at low pH.</li></ol>
-              <div class="critical-note"><strong>pH Sensitivity:</strong> LNPs stable only at low pH (< 4-5).</li>
-              <div class="safety-note"><strong>Handle Base/Acid Safely!</strong></li>
-        </section>
-        <section id="microemulsion-proc" class="mb-16 p-8 rounded-lg shadow-lg section-bg-white">
-            <h2 >Method 4: Detailed Protocol - LNP Synthesis via Microemulsion Templating</h2>
-            <p>Using W/O microemulsions as templates, based on <a href="https://doi.org/10.1039/c4sm02851a" target="_blank" rel="noopener noreferrer">Nypelö, Carrillo, and Rojas (2015)</a>.</p>
-            <h3>4.1 Materials & Reagents</h3>
-             <ul class="list-disc list-inside pl-4 mb-6 text-sm space-y-2"><li><strong>Lignin Source:</strong> Kraft Lignin (low $M_w$).</li><li><strong>Oil Phase:</strong> Octane.</li><li><strong>Surfactant Mix:</strong> Span® 80, Tween® 80, 1-Pentanol (e.g., ratio 2:1.2:0.9).</li><li><strong>Aqueous Phase Base:</strong> 1 M NaOH.</li><li><strong>Cross-linker:</strong> Epichlorohydrin.</li><li><strong>Water:</strong> DI Water/Milli-Q (washing).</li></ul>
-            <h3>4.2 Equipment</h3>
-             <ul class="list-disc list-inside pl-4 mb-6 text-sm space-y-2"><li>Standard lab equipment + Thermostated bath, Centrifuge.</li></ul>
-            <h3>4.3 Procedure</h3>
-              <ol class="list-decimal list-inside pl-6 space-y-4"><li><strong>Surfactant/Oil Phase:</strong> Prepare mix. Dissolve in octane (e.g., 5-15 vol% final).</li><li><strong>Aqueous Lignin Phase:</strong> Dissolve lignin in 1 M NaOH (e.g., 20 wt%).</li><li><strong>Form W/O Microemulsion:</strong> Gently add aqueous phase (e.g., 1-5 vol%) to oil phase. Mix gently until clear.</li><li><strong>Cross-linking:</strong> Add epichlorohydrin (e.g., 1:1 ratio) slowly. Stir 15 min room temp. Heat (e.g., 55°C), stir gently (e.g., 40 min).</li><li><strong>Separation/Washing:</strong> Cool. Add excess DI water, mix. Centrifuge. Discard top oil layer. Resuspend particles in DI water. Repeat wash (3-5x).</li><li><strong>Collection:</strong> Collect aqueous dispersion. Store 4°C.</li><li><strong>Characterization:</strong> DLS/Zeta, SEM/TEM.</li></ol>
-              <div class="critical-note"><strong>Microemulsion Nuances:</strong> Requires stable microemulsion. Cross-linking critical. Size templated.</li>
-              <div class="safety-note"><strong>Safety:</strong> Handle octane, pentanol, epichlorohydrin (toxic) in fume hood.</li>
-              <h3 class="!mt-12">Conceptual Visualization: Microemulsion Templating</h3>
-              <div class="visualization-container">
-                  <div class="vis-stage"><div class="vis-label">1. W/O Microemulsion</div><div class="microemulsion-vis" title="Oil phase containing aqueous droplets with dissolved lignin"><div class="me-droplet">L</div><div class="me-droplet">L</div><div class="me-droplet">L</div><div class="me-droplet">L</div><div class="me-droplet">L</div><div class="me-droplet">L</div><div class="me-droplet">L</div><div class="me-droplet">L</div><div class="me-droplet">L</div></div></div>
-                  <div class="vis-arrow">➔</div>
-                   <div class="vis-stage"><div class="vis-label">2. Cross-linking</div><div class="microemulsion-vis" title="Cross-linker reacts inside droplets"><div class="me-droplet">L<span class="text-red-600 font-bold">x</span></div><div class="me-droplet">L<span class="text-red-600 font-bold">x</span></div><div class="me-droplet">L<span class="text-red-600 font-bold">x</span></div><div class="me-droplet">L<span class="text-red-600 font-bold">x</span></div><div class="me-droplet">L<span class="text-red-600 font-bold">x</span></div><div class="me-droplet">L<span class="text-red-600 font-bold">x</span></div><div class="me-droplet">L<span class="text-red-600 font-bold">x</span></div><div class="me-droplet">L<span class="text-red-600 font-bold">x</span></div><div class="me-droplet">L<span class="text-red-600 font-bold">x</span></div></div></div>
-                  <div class="vis-arrow">➔</div>
-                  <div class="vis-stage"><div class="vis-label">3. Separation/Washing</div><div class="solid-particles-vis" title="Solid lignin particles dispersed in water"><div class="solid-particle"></div><div class="solid-particle"></div><div class="solid-particle"></div><div class="solid-particle"></div><div class="solid-particle"></div><div class="solid-particle"></div><div class="solid-particle"></div><div class="solid-particle"></div><div class="solid-particle"></div></div></div>
-              </div>
-        </section>
-         <section id="aerosol-proc" class="mb-16 p-8 rounded-lg shadow-lg section-bg-white">
-            <h2 >Method 5: Detailed Protocol - LNP Synthesis via Aerosol Flow Reactor</h2>
-            <p>High-throughput synthesis of dry, spherical lignin particles, based on <a href="https://doi.org/10.1021/acsami.6b07900" target="_blank" rel="noopener noreferrer">Ago et al. (2016)</a>.</p>
-            <h3>5.1 Materials & Reagents</h3>
-             <ul class="list-disc list-inside pl-4 mb-6 text-sm space-y-2"><li><strong>Lignin Source:</strong> Kraft, Organosolv, Alkali Lignin (whole or fractionated).</li><li><strong>Solvent:</strong> DMF (Kraft/Organosolv); Water (Alkali).</li><li><strong>Carrier Gas:</strong> N$_2$.</li><li><strong>Dilution Gas:</strong> Air (filtered).</li></ul>
-            <h3>5.2 Equipment</h3>
-             <ul class="list-disc list-inside pl-4 mb-6 text-sm space-y-2"><li>Aerosol Flow Reactor System: Atomizer, MFCs, Heated Flow Tube Reactor, Cooling/Dilution Section, Particle Collection (Impactor/Filter), Vacuum Pump.</li><li>Standard lab equipment.</li></ul>
-            <h3>5.3 Procedure</h3>
-              <ol class="list-decimal list-inside pl-6 space-y-4"><li><strong>Lignin Solution:</strong> Dissolve lignin (e.g., 0.5-2 wt%) in appropriate solvent.</li><li><strong>System Setup:</strong> Assemble reactor. Set furnace temp (e.g., 100°C water, 153°C DMF). Set gas flows (e.g., N$_2$ 3 L/min, Air 30 L/min). Stabilize.</li><li><strong>Atomization:</strong> Feed lignin solution to atomizer.</li><li><strong>Drying:</strong> Aerosol passes through heated tube, solvent evaporates.</li><li><strong>Cooling & Dilution:</strong> Mix aerosol with dilution air.</li><li><strong>Collection:</strong> Collect dry particles using BLPI (size fractionation) or filter.</li><li><strong>Retrieval:</strong> Retrieve dry particles. Store.</li><li><strong>Characterization:</strong> Analyze dry (SEM/TEM) and redispersed particles (DLS/Zeta).</li></ol>
-              <div class="critical-note"><strong>Aerosol Advantages/Challenges:</strong> (+) High throughput, dry product, size fractionation; (-) Specialized equipment, optimization needed, potential thermal effects.</li>
-              <div class="safety-note"><strong>Safety:</strong> DMF toxic. High temps/gases. Follow protocols.</li>
-               <h3 class="!mt-12">Conceptual Visualization: Aerosol Flow Reactor</h3>
-               <div class="visualization-container">
-                   <div class="vis-stage"><div class="vis-label">1. Atomization</div><div class="aerosol-vis" title="Lignin solution atomized"><div class="aerosol-nozzle"></div><div class="aerosol-droplet" style="left: 45%; top: 25%; animation-delay: 0s;"></div><div class="aerosol-droplet" style="left: 55%; top: 28%; animation-delay: 0.1s;"></div><div class="aerosol-droplet" style="left: 50%; top: 32%; animation-delay: 0.2s;"></div></div></div>
-                   <div class="vis-arrow">➔</div>
-                    <div class="vis-stage"><div class="vis-label">2. Drying in Reactor</div><div class="aerosol-vis" title="Solvent evaporates"><div style="width: 80%; height: 70%; border: 2px solid #ef4444; margin-top: 10px; position:relative; background: linear-gradient(to bottom, #fee2e2, #fecaca); border-radius: 4px;"><div class="aerosol-droplet" style="left: 40%; top: 60%; animation: none; transform: scale(0.6); background-color: var(--primary-color); opacity: 0.7;"></div><div class="aerosol-droplet" style="left: 60%; top: 70%; animation: none; transform: scale(0.5); background-color: var(--primary-color); opacity: 0.6;"></div><div class="aerosol-droplet" style="left: 50%; top: 80%; animation: none; transform: scale(0.4); background-color: var(--primary-color); opacity: 0.5;"></div></div></div></div>
-                   <div class="vis-arrow">➔</div>
-                   <div class="vis-stage"><div class="vis-label">3. Collection</div><div class="aerosol-vis" title="Dry solid particles collected"><div style="width: 80%; height: 15px; background-color: #9ca3af; margin-top: auto; border-radius: 2px; position:relative;"><div class="solid-particle" style="width:8px; height:8px; position:absolute; bottom: 2px; left: 20%;"></div><div class="solid-particle" style="width:6px; height:6px; position:absolute; bottom: 2px; left: 45%;"></div><div class="solid-particle" style="width:10px; height:10px; position:absolute; bottom: 2px; left: 70%;"></div></div></div></div>
-               </div>
-        </section>
-        <section id="comparison-sim" class="mb-16 p-8 rounded-lg shadow-lg section-bg-light dynamic-content">
-            <h2 >Process Dynamics: Dialysis vs. Rapid Precipitation Simulations</h2>
-            <p>These simulations conceptually illustrate kinetic differences between slow dialysis (Method 1) and rapid precipitation (Method 2 variants). Adjust parameters and observe trends. (Note: Methods 3, 4, 5 follow different primary mechanisms not directly comparable in this kinetic simulation).</p>
-             <div class="interactive-block">
-                <h3 class="text-center !mt-0 !border-b-0">Comparative Simulation Controls (Methods 1 & 2)</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 mb-6">
-                    <div><div class="slider-label"><label for="sim-conc-slider">Initial Lignin Conc. ($C_{Lignin}$, mg/mL):</label><span id="sim-conc-value">5.0</span></div><input type="range" id="sim-conc-slider" min="1" max="20" value="5.0" step="0.5"></div>
-                    <div><div class="slider-label"><label for="sim-rate-slider">Addition Rate / Intensity:</label><span id="sim-rate-value">5</span></div><input type="range" id="sim-rate-slider" min="1" max="10" value="5" step="1"></div>
-                </div>
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8">
-                    <div class="simulation-container" id="sim-dialysis"><div class="simulation-title">1. Dialysis (Method 1)</div><div class="simulation-visual-area" style="background-color: var(--accent-blue-light);"><div class="dialysis-sim-bag"><div class="particle-area" id="dialysis-particles"></div></div></div><div class="sim-button-container"><button id="run-dialysis-btn">Run Dialysis Sim</button></div></div>
-                    <div class="simulation-container" id="sim-lignin-to-water"><div class="simulation-title">2. Rapid Precip. (L→W, Method 2)</div><div class="simulation-visual-area" id="sim-lignin-to-water-visual-area"><div class="particle-area" id="lignin-to-water-particles"></div></div><div class="sim-button-container"><button id="run-lignin-to-water-btn">Run L→W Sim</button></div></div>
-                    <div class="simulation-container" id="sim-water-to-lignin"><div class="simulation-title">3. Rapid Precip. (W→L, Alt. Method 2)</div><div class="simulation-visual-area" id="sim-water-to-lignin-visual-area" style="background-color: rgba(251, 191, 36, 0.1);"><div class="particle-area" id="water-to-lignin-particles"></div></div><div class="sim-button-container"><button id="run-water-to-lignin-btn">Run W→L Sim</button></div></div>
-                </div>
-                 <div id="sim-error" class="error-text" style="min-height: 1.5rem;"></div>
-                <h4 class="mt-12">Interpreting Simulation Outcomes (Conceptual Trends - Methods 1 & 2):</h4>
-                 <ul class="list-disc list-inside pl-4 mb-4 space-y-2 text-base"><li><strong>Dialysis:</strong> Slow, gradual appearance of smaller, more uniform particles.</li><li><strong>Lignin → Water Precipitation:</strong> Rapid formation near addition point; larger particles, more aggregation.</li><li><strong>Water → Lignin Precipitation:</strong> Rapid, bulk formation; also prone to large size/aggregation.</li><li><strong>Concentration & Rate Effects:</strong> Higher conc./rate $\rightarrow$ larger size/aggregation in precipitation.</li></ul>
-            </div>
-        </section>
-        <section id="characterization" class="mb-16 p-8 rounded-lg shadow-lg section-bg-white">
-            <h2 >Essential Characterization: Rigorous Analysis of LNPs</h2>
-            <p>Comprehensive characterization is non-negotiable across all synthesis routes.</p>
-             <ul class="list-disc list-inside pl-4 mb-4 space-y-3"><li><strong>DLS:</strong> $D_h$ & PDI. Compare methods. Assess redispersibility (Method 5).</li><li><strong>Zeta Potential:</strong> Stability vs pH/ionic strength. Compare profiles. Note Method 3 sensitivity. Method 4/5 depend on residuals/medium/surface.</li><li><strong>EM (TEM/SEM):</strong> Morphology, size, aggregation. Check Method 5 integrity post-redispersion. Method 4 porosity.</li><li><strong>AFM:</strong> 3D topography, surface texture.</li><li><strong>Spectroscopy (FTIR/NMR):</strong> Chemical fidelity, residuals. Check thermal effects (Method 5). ${}^{31}$P NMR crucial for OH groups if using fractions.</li><li><strong>Chromatography (SEC/GPC):</strong> MW integrity (degradation/fractionation). Essential for fractionated lignin.</li><li><strong>Quantification:</strong> Yield comparison. Method 5 yield from dry mass.</li><li><strong>Method 4 Specifics:</strong> Analyze residual surfactants, confirm cross-linking.</li><li><strong>Method 5 Specifics:</strong> Thermal analysis (TGA/DSC), Surface analysis (XPS).</li></ul>
-             <div class="critical-note"><strong>Holistic Comparison:</strong> Evaluate methods based on size, PDI, yield, reproducibility, stability, purity, scalability, speed, safety, environmental impact, suitability for modification (e.g., PDAC coating), and compatibility with starting material (whole vs. fractionated lignin).</div>
-        </section>
-                  <section id="lignin-source" class="mb-16 p-8 rounded-lg shadow-lg section-bg-white">
-            <h2 >Lignin Source Material: Heterogeneity & Fractionation</h2>
-            <p>Technical lignins (Kraft, Organosolv, etc.) are inherently heterogeneous in MW, PDI, and functional groups. This significantly impacts LNP formation. <strong>Fractionation</strong> using organic solvents is key to obtaining more homogeneous fractions.</p>
-            <p>As demonstrated by <a href="https://doi.org/10.1039/d0gc03632c" target="_blank" rel="noopener noreferrer">Venditti et al. (2021)</a>, sequential extraction of Kraft lignin (KL) yields distinct fractions:</p>
+        <section id="lignin-source" class="mb-16 p-8 rounded-lg shadow-lg section-bg-white">
+            <h2 >Foundation: Lignin Source Material - Heterogeneity & Fractionation</h2>
+            <p>Before discussing synthesis, we must acknowledge the starting point: technical lignins (Kraft, Organosolv, etc.) are inherently heterogeneous in molecular weight (MW), polydispersity (PDI), and functional group content (-OH, -COOH, -OCH$_3$, residual S). This significantly impacts LNP formation and properties.</p>
+            <p><strong>Fractionation</strong> using organic solvents is key to obtaining more homogeneous lignin fractions prior to LNP synthesis. As demonstrated by <a href="https://doi.org/10.1039/d0gc03632c" target="_blank" rel="noopener noreferrer">Venditti et al. (2021)</a>, sequential extraction of Kraft lignin (KL) with solvents of differing polarity yields distinct fractions:</p>
             <ul>
                 <li><strong>Ethanol-Soluble (E-Frac):</strong> Lowest MW, most hydrophilic.</li>
                 <li><strong>Acetone-Soluble (A-Frac):</strong> Intermediate MW/hydrophilicity.</li>
                 <li><strong>THF-Soluble (T-Frac):</strong> Highest MW, most hydrophobic.</li>
             </ul>
-            <p>Using these fractions leads to different LNP characteristics via solvent shifting (Methods 1, 2, 3). E-Frac $\rightarrow$ larger, softer, aggregated particles; T-Frac $\rightarrow$ smaller initial particles prone to aggregation; A-Frac $\rightarrow$ often well-defined, stable particles. Characterizing your starting lignin (whole or fractionated) via GPC and NMR is crucial.</p>
+            <p>Using these fractions leads to different LNP characteristics via solvent shifting (Methods 2, 3). E-Frac $\rightarrow$ larger, softer, aggregated particles; T-Frac $\rightarrow$ smaller initial particles prone to aggregation; A-Frac $\rightarrow$ often well-defined, stable particles. Characterizing your starting lignin (whole or fractionated) via GPC and NMR is crucial.</p>
             <h4>Fractionation Protocol Example (Venditti et al. 2021)</h4>
              <ol class="list-decimal list-inside pl-6 space-y-2 text-base">
                  <li>~1 g dry KL + 40 mL anhydrous ethanol. Vortex. Centrifuge. Decant supernatant (E-Frac soln).</li>
@@ -241,6 +138,198 @@
                  <li>To pellet, add 40 mL anhydrous THF. Vortex. Centrifuge. Decant supernatant (T-Frac soln). Discard pellet.</li>
                  <li>Evaporate solvent from each fraction soln. Dry thoroughly before use.</li>
              </ol>
+        </section>
+        <section id="principle" class="mb-16 p-8 rounded-lg shadow-lg section-bg-light">
+            <h2 >Underlying Science: Driving Forces & Mechanisms</h2>
+             <h3>LNP Formation Mechanisms</h3>
+            <p>LNP formation relies on inducing a controlled phase separation, templated solidification, or rapid drying.</p>
+            <ol class="list-decimal list-inside pl-4 space-y-4">
+                <li><strong>Solubility & Solvent/pH Quality Change (Methods 1, 2, 3):</strong> Lignin solubility depends on structure/solvent ($\Delta G_{mix} < 0$ in good solvent). Poor solvent (water) or pH change reduces quality ($\Delta G_{mix} > 0$), driving aggregation.</li>
+                 <li><strong>Microemulsion Templating (Method 4):</strong> Uses stable W/O microemulsions. Nanoscale aqueous droplets with lignin act as templates. Solidification via cross-linking preserves size/shape.</li>
+                 <li><strong>Aerosol Atomization & Drying (Method 5):</strong> Atomized lignin solution droplets dry rapidly in heated reactor. Lignin solidifies within shrinking droplet. Kinetics governed by heat/mass transfer.</li>
+                <li><strong>Process Kinetics (Solvent/pH Exchange/Drying Rates):</strong> pH Change (1) depends on rate. Rapid Precipitation (2) = fast mixing. Dialysis (3) = slow diffusion. Aerosol (5) = fast drying.</li>
+                <li><strong>Particle Formation Pathways:</strong> Methods 1, 2, 3: Supersaturation $\rightarrow$ nucleation $\rightarrow$ growth/aggregation. Method 4: Template size + cross-linking kinetics. Method 5: Precipitation within shrinking droplet. Fractionation affects nucleation/growth in Methods 1, 2, 3.</li>
+                <li><strong>Colloidal Stabilization (LNPs):</strong> Formed LNPs need stability (electrostatic/steric, DLVO). Crucial post-synthesis. Method 4 uses surfactants; Method 5 needs redispersion. Fractionation impacts surface properties/stability.</li>
+            </ol>
+            <h3 class="!mt-8">Pickering Emulsion Stabilization Principles</h3>
+            <p>Once formed, LNPs can stabilize emulsions (dispersions of immiscible liquids like oil and water) via the Pickering mechanism:</p>
+            <ol class="list-decimal list-inside pl-4 space-y-4">
+                <li><strong>Interfacial Adsorption:</strong> Solid particles (LNPs) adsorb to the oil-water interface, reducing the thermodynamically unfavorable contact area between the two phases. The energy required to desorb a particle ($\Delta G_{des}$) is high, making adsorption effectively irreversible, especially for particles with intermediate wettability. $\Delta G_{des} = \pi R^2 \gamma_{ow} (1 \pm \cos\theta)^2$, where R is particle radius, $\gamma_{ow}$ is interfacial tension, and $\theta$ is the contact angle. For $\Delta G_{des} \gg kT$, particles are strongly anchored.</li>
+                <li><strong>Wettability & Contact Angle ($\theta$):</strong> The particle's affinity for oil vs. water, quantified by $\theta$ (measured through water), is critical. Lignin's amphiphilicity often leads to intermediate wettability ($\theta$ near $90^\circ$ but typically $<90^\circ$ for many technical lignins, favoring O/W stabilization). Modifications can tune $\theta$.</li>
+                <li><strong>Steric Barrier Formation:</strong> Adsorbed particles form a physical barrier preventing droplet coalescence. Barrier robustness depends on particle size, shape, concentration (coverage), and inter-particle interactions.</li>
+                <li><strong>Network Formation:</strong> Excess particles in the continuous phase can form networks, hindering creaming/sedimentation.</li>
+            </ol>
+        </section>
+        <section id="synthesis-methods" class="mb-16">
+            <h2 >LNP Synthesis Methodologies: Detailed Protocols</h2>
+            <section id="precipitation-ph-proc" class="section-bg-white p-8 rounded-lg shadow-lg mb-8">
+                <h3 >Method 1: Acid Precipitation from High pH</h3>
+                <p>Aqueous route yielding pH-sensitive LNPs, based on Method B by <a href="https://doi.org/10.1002/cphc.201200537" target="_blank" rel="noopener noreferrer">Frangville et al. (2012)</a>.</p>
+                <h4>1.1 Materials & Reagents</h4>
+                 <ul class="list-disc list-inside pl-4 mb-6 text-sm space-y-2"><li><strong>Lignin Source:</strong> Low-sulfonated Kraft Lignin.</li><li><strong>Base:</strong> 1 M NaOH.</li><li><strong>Acid:</strong> 0.25 M HNO$_3$.</li><li><strong>Water:</strong> DI Water/Milli-Q.</li></ul>
+                <h4>1.2 Equipment</h4>
+                 <ul class="list-disc list-inside pl-4 mb-6 text-sm space-y-2"><li>Standard lab equipment + pH meter.</li></ul>
+                <h4>1.3 Procedure</h4>
+                  <ol class="list-decimal list-inside pl-6 space-y-4"><li><strong>High-pH Stock (~7.7 wt%):</strong> Dissolve lignin in water by gradually adding 1 M NaOH to pH ~11.4-11.5.</li><li><strong>Working Solution (~0.05 wt%):</strong> Dilute stock with water.</li><li><strong>Acid Precipitation:</strong> Stir working solution. Rapidly add calculated acid volume (e.g., 0.9mL 0.25M HNO$_3$ per 10mL). Final pH ~2.</li><li><strong>Collection/(Opt.) Washing:</strong> Store low-pH dispersion at 4°C. Opt. washing via centrifugation/resuspension.</li><li><strong>Characterization:</strong> DLS/Zeta at low pH.</li></ol>
+                  <div class="critical-note"><strong>pH Sensitivity:</strong> LNPs stable only at low pH (< 4-5).</li>
+                  <div class="safety-note"><strong>Handle Base/Acid Safely!</strong></li>
+            </section>
+            <section id="precipitation-lw-proc" class="section-bg-white p-8 rounded-lg shadow-lg mb-8">
+                <h3 >Method 2: Rapid Precipitation (Lignin → Water)</h3>
+                <p>Rapid addition of lignin solution to non-solvent. Fast, less controlled. Suitable for various lignins/solvents and fractions thereof.</p>
+                 <h4>2.1 Materials & Reagents</h4>
+                 <ul class="list-disc list-inside pl-4 mb-6 text-sm space-y-2"><li><strong>Lignin Source:</strong> e.g., Kraft, HPL (whole or fractionated E/A/T-Frac).</li><li><strong>Organic Solvent:</strong> e.g., THF, Acetone, Ethanol.</li><li><strong>Non-Solvent:</strong> DI Water/Milli-Q.</li></ul>
+                <h4>2.2 Equipment</h4>
+                 <ul class="list-disc list-inside pl-4 mb-6 text-sm space-y-2"><li>Standard lab equipment. Syringe pump useful for rate control.</li></ul>
+                <h4>2.3 Procedure</h4>
+                  <ol class="list-decimal list-inside pl-6 space-y-4"><li><strong>Lignin Solution:</strong> Prepare filtered solution (e.g., 0.5-10 g/L or 0.1-3 wt%).</li><li><strong>Non-Solvent Bath:</strong> Place water in beaker (e.g., 10:1 ratio). Vigorous stirring (>700 rpm).</li><li><strong>Rapid Addition:</strong> Inject lignin solution rapidly into stirred water. Control rate (1-1100 mL/min) to influence size (<a href="https://doi.org/10.1021/acs.langmuir.6b01088" target="_blank" rel="noopener noreferrer">Richter et al. 2016</a>). Observe turbidity.</li><li><strong>Solvent Evaporation:</strong> Leave stirring uncovered in fume hood to evaporate organic solvent.</li><li><strong>Collection:</strong> Transfer dispersion. Store 4°C.</li><li><strong>Characterization:</strong> DLS/Zeta. Size tunable by conc./rate. Morphology/stability depends strongly on lignin fraction used (<a href="https://doi.org/10.1039/d0gc03632c" target="_blank" rel="noopener noreferrer">Venditti et al. 2021</a>).</li></ol>
+                  <div class="critical-note"><strong>Challenge:</strong> Rapid kinetics sensitive to mixing, rate, temp, conc., lignin fraction. Stabilization critical.</li>
+                   <div class="safety-note"><strong>Safety Reminder:</strong> Handle organic solvents in fume hood.</li>
+            </section>
+            <section id="dialysis-proc" class="section-bg-white p-8 rounded-lg shadow-lg mb-8">
+                <h3 >Method 3: Dialysis</h3>
+                <p>Controlled solvent exchange via dialysis, based on <a href="https://doi.org/10.1039/C5GC01431E" target="_blank" rel="noopener noreferrer">Lievonen et al. (2015/2016)</a>. Suitable for unfractionated or fractionated lignin.</p>
+                <h4>3.1 Materials & Reagents</h4>
+                 <ul class="list-disc list-inside pl-4 mb-6 text-sm space-y-2"><li><strong>Lignin Source:</strong> e.g., Kraft Lignin (whole or fractionated E/A/T-Frac). Characterized/dried.</li><li><strong>Organic Solvent:</strong> THF (or EG for variation).</li><li><strong>Non-Solvent:</strong> DI Water/Milli-Q.</li><li><strong>Dialysis Membrane:</strong> RC tubing, MWCO 12-14 kDa.</li></ul>
+                <h4>3.2 Equipment</h4>
+                 <ul class="list-disc list-inside pl-4 mb-6 text-sm space-y-2"><li>Standard lab equipment as previously listed.</li></ul>
+                <h4>3.3 Procedure</h4>
+                  <ol class="list-decimal list-inside pl-6 space-y-4"><li><strong>Lignin Solution (e.g., 5 mg/mL):</strong> Prepare filtered solution of chosen lignin (whole/fraction) in THF.</li><li><strong>Membrane Prep:</strong> Rinse/soak RC tubing.</li><li><strong>Loading:</strong> Clamp end 1. Add 10.0 mL solution. Clamp end 2. Check seals. Rinse outside.</li><li><strong>Dialysis:</strong> Submerge bag in ~1.5 L DI water. Gentle stirring (100-150 rpm). Water changes (Total 48-72h). Observe turbidity.</li><li><strong>Collection:</strong> Collect dispersion. Store 4°C.</li><li><strong>Characterization:</strong> DLS/Zeta.</li></ol>
+                  <div class="critical-note"><strong>Variations & Notes:</strong>
+                    <ul><li><strong>Frangville et al. (2012, Method A):</strong> Precipitate lignin from ethylene glycol (EG) with slow HCl addition, then dialyze. Optional cross-linking.</li><li><strong>Richter et al. (2016):</strong> Flash precipitate Indulin AT from EG with rapid HNO$_3$ addition. Monitor growth kinetics in EG over time *before* quenching growth by water dilution.</li><li><strong>Fractionation Impact (Venditti et al. 2021):</strong> Using E-Frac, A-Frac, or T-Frac yields significantly different LNP size/stability compared to whole KL.</li></ul></div>
+                  <div class="safety-note"><strong>Safety:</strong> THF flammable/irritant. EG requires care. Use fume hood.</li>
+            </section>
+            <section id="microemulsion-proc" class="section-bg-white p-8 rounded-lg shadow-lg mb-8">
+                <h3 >Method 4: Microemulsion Templating</h3>
+                <p>Using W/O microemulsions as templates, based on <a href="https://doi.org/10.1039/c4sm02851a" target="_blank" rel="noopener noreferrer">Nypelö, Carrillo, and Rojas (2015)</a>.</p>
+                <h4>4.1 Materials & Reagents</h4>
+                 <ul class="list-disc list-inside pl-4 mb-6 text-sm space-y-2"><li><strong>Lignin Source:</strong> Kraft Lignin (low $M_w$).</li><li><strong>Oil Phase:</strong> Octane.</li><li><strong>Surfactant Mix:</strong> Span® 80, Tween® 80, 1-Pentanol (e.g., ratio 2:1.2:0.9).</li><li><strong>Aqueous Phase Base:</strong> 1 M NaOH.</li><li><strong>Cross-linker:</strong> Epichlorohydrin.</li><li><strong>Water:</strong> DI Water/Milli-Q (washing).</li></ul>
+                <h4>4.2 Equipment</h4>
+                 <ul class="list-disc list-inside pl-4 mb-6 text-sm space-y-2"><li>Standard lab equipment + Thermostated bath, Centrifuge.</li></ul>
+                <h4>4.3 Procedure</h4>
+                  <ol class="list-decimal list-inside pl-6 space-y-4"><li><strong>Surfactant/Oil Phase:</strong> Prepare mix. Dissolve in octane (e.g., 5-15 vol% final).</li><li><strong>Aqueous Lignin Phase:</strong> Dissolve lignin in 1 M NaOH (e.g., 20 wt%).</li><li><strong>Form W/O Microemulsion:</strong> Gently add aqueous phase (e.g., 1-5 vol%) to oil phase. Mix gently until clear.</li><li><strong>Cross-linking:</strong> Add epichlorohydrin (e.g., 1:1 ratio) slowly. Stir 15 min room temp. Heat (e.g., 55°C), stir gently (e.g., 40 min).</li><li><strong>Separation/Washing:</strong> Cool. Add excess DI water, mix. Centrifuge. Discard top oil layer. Resuspend particles in DI water. Repeat wash (3-5x).</li><li><strong>Collection:</strong> Collect aqueous dispersion. Store 4°C.</li><li><strong>Characterization:</strong> DLS/Zeta, SEM/TEM.</li></ol>
+                  <div class="critical-note"><strong>Microemulsion Nuances:</strong> Requires stable microemulsion. Cross-linking critical. Size templated.</li>
+                  <div class="safety-note"><strong>Safety:</strong> Handle octane, pentanol, epichlorohydrin (toxic) in fume hood.</li>
+                  <h4 class="!mt-8 !mb-4 !border-b-0">Conceptual Visualization: Microemulsion Templating</h4>
+                  <div class="visualization-container">
+                      <div class="vis-stage"><div class="vis-label">1. W/O Microemulsion</div><div class="microemulsion-vis" title="Oil phase containing aqueous droplets with dissolved lignin"><div class="me-droplet">L</div><div class="me-droplet">L</div><div class="me-droplet">L</div><div class="me-droplet">L</div><div class="me-droplet">L</div><div class="me-droplet">L</div><div class="me-droplet">L</div><div class="me-droplet">L</div><div class="me-droplet">L</div></div></div>
+                      <div class="vis-arrow">➔</div>
+                       <div class="vis-stage"><div class="vis-label">2. Cross-linking</div><div class="microemulsion-vis" title="Cross-linker reacts inside droplets"><div class="me-droplet">L<span class="text-red-600 font-bold">x</span></div><div class="me-droplet">L<span class="text-red-600 font-bold">x</span></div><div class="me-droplet">L<span class="text-red-600 font-bold">x</span></div><div class="me-droplet">L<span class="text-red-600 font-bold">x</span></div><div class="me-droplet">L<span class="text-red-600 font-bold">x</span></div><div class="me-droplet">L<span class="text-red-600 font-bold">x</span></div><div class="me-droplet">L<span class="text-red-600 font-bold">x</span></div><div class="me-droplet">L<span class="text-red-600 font-bold">x</span></div><div class="me-droplet">L<span class="text-red-600 font-bold">x</span></div></div></div>
+                      <div class="vis-arrow">➔</div>
+                      <div class="vis-stage"><div class="vis-label">3. Separation/Washing</div><div class="solid-particles-vis" title="Solid lignin particles dispersed in water"><div class="solid-particle"></div><div class="solid-particle"></div><div class="solid-particle"></div><div class="solid-particle"></div><div class="solid-particle"></div><div class="solid-particle"></div><div class="solid-particle"></div><div class="solid-particle"></div><div class="solid-particle"></div></div></div>
+                  </div>
+            </section>
+             <section id="aerosol-proc">
+                <h3 >Method 5: Aerosol Flow Reactor</h3>
+                <p>High-throughput synthesis of dry, spherical lignin particles, based on <a href="https://doi.org/10.1021/acsami.6b07900" target="_blank" rel="noopener noreferrer">Ago et al. (2016)</a>.</p>
+                <h4>5.1 Materials & Reagents</h4>
+                 <ul class="list-disc list-inside pl-4 mb-6 text-sm space-y-2"><li><strong>Lignin Source:</strong> Kraft, Organosolv, Alkali Lignin (whole or fractionated).</li><li><strong>Solvent:</strong> DMF (Kraft/Organosolv); Water (Alkali).</li><li><strong>Carrier Gas:</strong> N$_2$.</li><li><strong>Dilution Gas:</strong> Air (filtered).</li></ul>
+                <h4>5.2 Equipment</h4>
+                 <ul class="list-disc list-inside pl-4 mb-6 text-sm space-y-2"><li>Aerosol Flow Reactor System: Atomizer, MFCs, Heated Flow Tube Reactor, Cooling/Dilution Section, Particle Collection (Impactor/Filter), Vacuum Pump.</li><li>Standard lab equipment.</li></ul>
+                <h4>5.3 Procedure</h4>
+                  <ol class="list-decimal list-inside pl-6 space-y-4"><li><strong>Lignin Solution:</strong> Dissolve lignin (e.g., 0.5-2 wt%) in appropriate solvent.</li><li><strong>System Setup:</strong> Assemble reactor. Set furnace temp (e.g., 100°C water, 153°C DMF). Set gas flows (e.g., N$_2$ 3 L/min, Air 30 L/min). Stabilize.</li><li><strong>Atomization:</strong> Feed lignin solution to atomizer.</li><li><strong>Drying:</strong> Aerosol passes through heated tube, solvent evaporates.</li><li><strong>Cooling & Dilution:</strong> Mix aerosol with dilution air.</li><li><strong>Collection:</strong> Collect dry particles using BLPI (size fractionation) or filter.</li><li><strong>Retrieval:</strong> Retrieve dry particles. Store.</li><li><strong>Characterization:</strong> Analyze dry (SEM/TEM) and redispersed particles (DLS/Zeta).</li></ol>
+                  <div class="critical-note"><strong>Aerosol Advantages/Challenges:</strong> (+) High throughput, dry product, size fractionation; (-) Specialized equipment, optimization needed, potential thermal effects.</li>
+                  <div class="safety-note"><strong>Safety:</strong> DMF toxic. High temps/gases. Follow protocols.</li>
+                   <h4 class="!mt-8 !mb-4 !border-b-0">Conceptual Visualization: Aerosol Flow Reactor</h4>
+                   <div class="visualization-container">
+                       <div class="vis-stage"><div class="vis-label">1. Atomization</div><div class="aerosol-vis" title="Lignin solution atomized"><div class="aerosol-nozzle"></div><div class="aerosol-droplet" style="left: 45%; top: 25%; animation-delay: 0s;"></div><div class="aerosol-droplet" style="left: 55%; top: 28%; animation-delay: 0.1s;"></div><div class="aerosol-droplet" style="left: 50%; top: 32%; animation-delay: 0.2s;"></div></div></div>
+                       <div class="vis-arrow">➔</div>
+                        <div class="vis-stage"><div class="vis-label">2. Drying in Reactor</div><div class="aerosol-vis" title="Solvent evaporates"><div style="width: 80%; height: 70%; border: 2px solid #ef4444; margin-top: 10px; position:relative; background: linear-gradient(to bottom, #fee2e2, #fecaca); border-radius: 4px;"><div class="aerosol-droplet" style="left: 40%; top: 60%; animation: none; transform: scale(0.6); background-color: var(--primary-color); opacity: 0.7;"></div><div class="aerosol-droplet" style="left: 60%; top: 70%; animation: none; transform: scale(0.5); background-color: var(--primary-color); opacity: 0.6;"></div><div class="aerosol-droplet" style="left: 50%; top: 80%; animation: none; transform: scale(0.4); background-color: var(--primary-color); opacity: 0.5;"></div></div></div></div>
+                       <div class="vis-arrow">➔</div>
+                       <div class="vis-stage"><div class="vis-label">3. Collection</div><div class="aerosol-vis" title="Dry solid particles collected"><div style="width: 80%; height: 15px; background-color: #9ca3af; margin-top: auto; border-radius: 2px; position:relative;"><div class="solid-particle" style="width:8px; height:8px; position:absolute; bottom: 2px; left: 20%;"></div><div class="solid-particle" style="width:6px; height:6px; position:absolute; bottom: 2px; left: 45%;"></div><div class="solid-particle" style="width:10px; height:10px; position:absolute; bottom: 2px; left: 70%;"></div></div></div></div>
+                   </div>
+            </section>
+        </section>
+         <section id="pickering-emulsions" class="mb-16 p-8 rounded-lg shadow-lg section-bg-white">
+            <h2 >Application Focus: LNP-Stabilized Pickering Emulsions</h2>
+            <p>A major application harnessing the colloidal nature of LNPs is the stabilization of Pickering emulsions. Here, LNPs adsorb at the oil-water interface, creating a steric barrier that prevents droplet coalescence. This section draws heavily on the comprehensive review by <a href="https://doi.org/10.1016/j.cis.2024.103247" target="_blank" rel="noopener noreferrer">Marquez et al. (2024)</a>.</p>
+            <h3>Principles & Key Parameters</h3>
+             <ul class="list-disc list-inside pl-4 mb-6 space-y-2">
+                 <li><strong>Wettability & Contact Angle ($\theta$):</strong> Lignin's amphiphilicity typically results in contact angles favoring O/W stabilization ($\theta < 90^\circ$). The exact angle depends on lignin source/fractionation and any modifications. Intermediate wettability ($\theta$ near $90^\circ$) provides the strongest anchoring energy ($\Delta G_{des}$) but requires sufficient particle concentration for effective barrier formation.</li>
+                 <li><strong>Particle Size ($d_{LNP}$):</strong> Smaller LNPs (e.g., 25-100 nm) generally lead to smaller emulsion droplets ($D_{emul}$) and higher stability due to better packing and coverage. Larger LNPs (> 1 $\mu$m) tend to form larger droplets (> 25 $\mu$m) with reduced stability. Trend: $D_{emul} \propto d_{LNP}$.</li>
+                 <li><strong>Particle Concentration ($C_{LNP}$):</strong> Higher $C_{LNP}$ provides better interfacial coverage, leading to smaller $D_{emul}$ and enhanced stability. A minimum concentration (often ~0.2 wt% for NPs) is needed. Trend: $D_{emul} \propto 1/C_{LNP}$.</li>
+                 <li><strong>pH & Zeta Potential ($\zeta$):</strong> Optimal stability often found at pH 3-7 where $\zeta$ is sufficiently negative (e.g., < -30 mV, up to -64 mV reported) for electrostatic repulsion. Extreme pH causes issues.</li>
+                 <li><strong>Emulsification Energy/Method:</strong> Higher energy (ultrasonication, high-shear) produces smaller initial droplets, requiring rapid LNP adsorption for stabilization.</li>
+                 <li><strong>Lignin Modification:</strong> Chemical modifications (acetylation, grafting with polymers like PNIPAM or polyacrylamide) significantly alter wettability and interfacial activity, enabling stabilization of different emulsion types (W/O) or imparting stimuli-responsiveness.</li>
+             </ul>
+             <h4>General Emulsification Protocol Example</h4>
+              <ol class="list-decimal list-inside pl-6 space-y-4">
+                  <li>Prepare aqueous LNP dispersion (from Methods 1-4, or redispersed from Method 5) at desired concentration (e.g., 0.1 - 2 wt%) and pH.</li>
+                  <li>Add the oil phase (e.g., hexadecane, vegetable oil, kerosene) at the target Oil:Water ratio (e.g., 1:1 v/v).</li>
+                  <li>Apply high energy emulsification (e.g., ultrasonication, high-shear homogenizer). Control energy input (amplitude/speed, time).</li>
+                  <li>Characterize resulting emulsion (droplet size, stability, microscopy).</li>
+              </ol>
+             <div class="critical-note"><strong>Key Findings (Marquez et al. 2024 Review):</strong> Smaller LNPs (<100nm) and higher concentrations (>0.2 wt%) are generally favorable. Stability is often best at pH 3-7. Chemical modification is a powerful tool for tuning properties. High energy input yields smaller droplets.</div>
+        </section>
+        <section id="interactive-sims" class="mb-16 p-8 rounded-lg shadow-lg section-bg-light dynamic-content">
+            <h2 >Interactive Conceptual Simulations</h2>
+             <div class="interactive-block">
+                <h3 class="text-center !mt-0 !border-b-0">Simulation 1: LNP Formation Kinetics (Dialysis vs. Precipitation)</h3>
+                <p class="text-center text-sm text-gray-600 mb-4">Compare slow diffusion (Method 3) vs. rapid mixing (Method 2 variants).</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 mb-6">
+                    <div><div class="slider-label"><label for="sim-conc-slider">Initial Lignin Conc. ($C_{Lignin}$, mg/mL):</label><span id="sim-conc-value">5.0</span></div><input type="range" id="sim-conc-slider" min="1" max="20" value="5.0" step="0.5"></div>
+                    <div><div class="slider-label"><label for="sim-rate-slider">Addition Rate / Intensity:</label><span id="sim-rate-value">5</span></div><input type="range" id="sim-rate-slider" min="1" max="10" value="5" step="1"></div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8">
+                    <div class="simulation-container" id="sim-dialysis"><div class="simulation-title">Dialysis (Method 3)</div><div class="simulation-visual-area" style="background-color: var(--accent-blue-light);"><div class="dialysis-sim-bag"><div class="particle-area" id="dialysis-particles"></div></div></div><div class="sim-button-container"><button id="run-dialysis-btn">Run Dialysis Sim</button></div></div>
+                    <div class="simulation-container" id="sim-lignin-to-water"><div class="simulation-title">Rapid Precip. (L→W, Method 2)</div><div class="simulation-visual-area" id="sim-lignin-to-water-visual-area"><div class="particle-area" id="lignin-to-water-particles"></div></div><div class="sim-button-container"><button id="run-lignin-to-water-btn">Run L→W Sim</button></div></div>
+                    <div class="simulation-container" id="sim-water-to-lignin"><div class="simulation-title">Rapid Precip. (W→L, Alt. Method 2)</div><div class="simulation-visual-area" id="sim-water-to-lignin-visual-area" style="background-color: rgba(251, 191, 36, 0.1);"><div class="particle-area" id="water-to-lignin-particles"></div></div><div class="sim-button-container"><button id="run-water-to-lignin-btn">Run W→L Sim</button></div></div>
+                </div>
+                 <div id="sim-error" class="error-text" style="min-height: 1.5rem;"></div>
+            </div>
+            <div class="interactive-block mt-12">
+                <h3 class="text-center !mt-0 !border-b-0">Simulation 2: Pickering Emulsion Droplet Size Trends</h3>
+                 <p class="text-center text-sm text-gray-600 mb-4">Explore how LNP properties and process conditions affect emulsion droplet size.</p>
+                 <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-6 mb-6">
+                     <div><div class="slider-label"><label for="emul-lnp-size-slider">LNP Size ($d_{LNP}$, nm):</label><span id="emul-lnp-size-value">200</span></div><input type="range" id="emul-lnp-size-slider" min="50" max="1000" value="200" step="10"></div>
+                     <div><div class="slider-label"><label for="emul-lnp-conc-slider">LNP Conc. ($C_{LNP}$, wt%):</label><span id="emul-lnp-conc-value">0.5</span></div><input type="range" id="emul-lnp-conc-slider" min="0.1" max="2.0" value="0.5" step="0.1"></div>
+                     <div><div class="slider-label"><label for="emul-shear-slider">Shear Energy (Arbitrary):</label><span id="emul-shear-value">5</span></div><input type="range" id="emul-shear-slider" min="1" max="10" value="5" step="1"></div>
+                 </div>
+                 <div class="emulsion-sim-area mb-4" id="emulsion-visual-area"></div>
+                 <div class="output-grid grid-cols-1 md:grid-cols-1">
+                     <div class="output-item"><span class="output-label">Estimated Avg. Emulsion Droplet Size ($D_{emul}$)</span><span class="output-value" id="emul-res-size">15</span><span class="output-unit">µm</span></div>
+                 </div>
+                 <div id="emul-error" class="error-text" style="min-height: 1.5rem;"></div>
+            </div>
+             <div class="interactive-block mt-12">
+                <h3 class="text-center !mt-0 !border-b-0">Simulation 3: DLVO Interaction Energy Profile</h3>
+                 <p class="text-center text-sm text-gray-600 mb-4">Visualize colloidal stability based on DLVO theory (Electrostatic Repulsion + van der Waals Attraction).</p>
+                 <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-6 mb-6">
+                     <div><div class="slider-label"><label for="dlvo-zeta-slider">Zeta Potential ($\zeta$, mV):</label><span id="dlvo-zeta-value">-40</span></div><input type="range" id="dlvo-zeta-slider" min="-80" max="80" value="-40" step="1"></div>
+                     <div><div class="slider-label"><label for="dlvo-radius-slider">Particle Radius (R, nm):</label><span id="dlvo-radius-value">100</span></div><input type="range" id="dlvo-radius-slider" min="10" max="500" value="100" step="5"></div>
+                     <div><div class="slider-label"><label for="dlvo-ionic-slider">Ionic Strength (mM):</label><span id="dlvo-ionic-value">10</span></div><input type="range" id="dlvo-ionic-slider" min="1" max="100" value="10" step="1"></div>
+                 </div>
+                 <div class="dlvo-plot-container" id="dlvo-plot-area">
+                     <svg width="100%" height="100%" viewBox="0 0 300 200" preserveAspectRatio="xMidYMid meet">
+                        <line class="dlvo-x-axis" x1="20" y1="180" x2="280" y2="180" stroke="#9ca3af" stroke-width="1"/>
+                        <line class="dlvo-y-axis" x1="20" y1="20" x2="20" y2="180" stroke="#9ca3af" stroke-width="1"/>
+                        <line class="dlvo-zero-line" id="dlvo-zero" x1="20" y1="100" x2="280" y2="100" />
+                        <path class="dlvo-curve" id="dlvo-curve-path" d="M20 100" />
+                        <text class="dlvo-label dlvo-x-label" x="150" y="195">Separation Distance (D)</text>
+                        <text class="dlvo-label dlvo-y-label" x="-100" y="15" transform="rotate(-90)">Interaction Energy (kT)</text>
+                        <text class="dlvo-label" x="25" y="30" font-size="8px" fill="#4b5563">Repulsion</text>
+                        <text class="dlvo-label" x="25" y="175" font-size="8px" fill="#4b5563">Attraction</text>
+                     </svg>
+                 </div>
+                 <div class="output-grid grid-cols-1 md:grid-cols-2">
+                     <div class="output-item"><span class="output-label">Energy Barrier ($V_{max}$)</span><span class="output-value" id="dlvo-vmax">0</span><span class="output-unit">kT</span></div>
+                     <div class="output-item"><span class="output-label">Secondary Minimum ($V_{min}$)</span><span class="output-value" id="dlvo-vmin">0</span><span class="output-unit">kT</span></div>
+                 </div>
+                 <div id="dlvo-error" class="error-text" style="min-height: 1.5rem;"></div>
+                 <h4 class="mt-8 !mb-2 !border-b-0">Interpreting DLVO Profile:</h4>
+                 <ul class="list-disc list-inside pl-4 text-base">
+                     <li>High Energy Barrier ($V_{max} \gg kT$) indicates good electrostatic stability against irreversible aggregation (primary minimum).</li>
+                     <li>Deep Secondary Minimum ($|V_{min}| > \text{few } kT$) suggests potential for reversible flocculation.</li>
+                     <li>Increasing Ionic Strength screens charges, reducing barrier height and increasing aggregation risk.</li>
+                     <li>Higher magnitude Zeta Potential increases the repulsive barrier.</li>
+                 </ul>
+            </div>
+        </section>
+        <section id="characterization" class="mb-16 p-8 rounded-lg shadow-lg section-bg-white">
+            <h2 >Essential Characterization: Rigorous Analysis of LNPs & Emulsions</h2>
+            <p>Comprehensive characterization is non-negotiable across all synthesis routes and for the resulting emulsions.</p>
+             <ul class="list-disc list-inside pl-4 mb-4 space-y-3"><li><strong>LNPs:</strong> DLS ($D_h$, PDI), Zeta Potential (vs pH, ionic strength), EM/AFM (morphology, size, aggregation), Spectroscopy (FTIR/NMR - chemistry, residuals), GPC (MW integrity), Quantification (Yield). Method-specific tests as needed.</li><li><strong>Emulsions:</strong> Droplet Size Distribution (Microscopy, Light Scattering), Stability Assessment (visual, Turbiscan, centrifugation), Interfacial Imaging (Confocal/Fluorescence), Rheology.</li></ul>
+             <div class="critical-note"><strong>Holistic Comparison:</strong> Evaluate methods based on LNP properties AND resulting emulsion performance (stability, droplet size, functionality).</div>
         </section>
          <section id="comparison-outlook" class="mb-16 p-8 rounded-lg shadow-lg section-bg-light">
             <h2 >Comprehensive Comparison & Outlook</h2>
@@ -250,54 +339,55 @@
                     <thead>
                         <tr>
                             <th>Feature</th>
-                            <th>Method 1: Dialysis</th>
+                            <th>Method 1: pH Precip. (High→Low)</th>
                             <th>Method 2: Rapid Precip. (L→W / W→L)</th>
-                            <th>Method 3: pH Precip. (High→Low)</th>
+                            <th>Method 3: Dialysis</th>
                             <th>Method 4: Microemulsion Templating</th>
                             <th>Method 5: Aerosol Flow Reactor</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td><strong>Principle</strong></td><td>Slow solvent diffusion</td><td>Rapid solvent mixing</td><td>Rapid pH change</td><td>W/O template + cross-linking</td><td>Atomization + rapid drying</td></tr>
-                        <tr><td><strong>Solvent System</strong></td><td>Org/Water</td><td>Org/Water</td><td>Aqueous</td><td>Oil/Water/Surfactant</td><td>Org or Water</td></tr>
-                        <tr><td><strong>Lignin Input</strong></td><td>Whole or Fractionated</td><td>Whole or Fractionated</td><td>Whole (low sulfonation)</td><td>Whole (low MW)</td><td>Whole or Fractionated</td></tr>
-                        <tr><td><strong>Typical Size (nm)</strong></td><td>~50-300</td><td>~50-500+ (highly variable)</td><td>~50-200</td><td>~90-1000</td><td>~30-2000</td></tr>
-                        <tr><td><strong>PDI Control</strong></td><td>Good</td><td>Poor</td><td>Moderate</td><td>Good (template)</td><td>Good (fractionation)</td></tr>
-                        <tr><td><strong>Speed</strong></td><td>Slow (days)</td><td>Fast (sec/min)</td><td>Fast (sec/min)</td><td>Moderate (hrs)</td><td>Very Fast (continuous)</td></tr>
-                        <tr><td><strong>Throughput</strong></td><td>Low</td><td>Moderate</td><td>Moderate</td><td>Moderate</td><td>High</td></tr>
-                        <tr><td><strong>Product Form</strong></td><td>Aq. Dispersion</td><td>Aq. Dispersion</td><td>Aq. Dispersion (low pH)</td><td>Aq. Dispersion</td><td>Dry Powder</td></tr>
+                        <tr><td><strong>Principle</strong></td><td>Rapid pH change</td><td>Rapid solvent mixing</td><td>Slow solvent diffusion</td><td>W/O template + cross-linking</td><td>Atomization + rapid drying</td></tr>
+                        <tr><td><strong>Solvent System</strong></td><td>Aqueous</td><td>Org/Water</td><td>Org/Water</td><td>Oil/Water/Surfactant</td><td>Org or Water</td></tr>
+                        <tr><td><strong>Lignin Input</strong></td><td>Whole (low sulfonation)</td><td>Whole or Fractionated</td><td>Whole or Fractionated</td><td>Whole (low MW)</td><td>Whole or Fractionated</td></tr>
+                        <tr><td><strong>Typical Size (nm)</strong></td><td>~50-200</td><td>~50-500+ (highly variable)</td><td>~50-300</td><td>~90-1000</td><td>~30-2000</td></tr>
+                        <tr><td><strong>PDI Control</strong></td><td>Moderate</td><td>Poor</td><td>Good</td><td>Good (template)</td><td>Good (fractionation)</td></tr>
+                        <tr><td><strong>Speed</strong></td><td>Fast (sec/min)</td><td>Fast (sec/min)</td><td>Slow (days)</td><td>Moderate (hrs)</td><td>Very Fast (continuous)</td></tr>
+                        <tr><td><strong>Throughput</strong></td><td>Moderate</td><td>Moderate</td><td>Low</td><td>Moderate</td><td>High</td></tr>
+                        <tr><td><strong>Product Form</strong></td><td>Aq. Dispersion (low pH)</td><td>Aq. Dispersion</td><td>Aq. Dispersion</td><td>Aq. Dispersion</td><td>Dry Powder</td></tr>
                         <tr><td><strong>Morphology</strong></td><td>Often spherical</td><td>Spherical to irregular aggregates</td><td>Often spherical</td><td>Spherical (templated)</td><td>Spherical</td></tr>
-                        <tr><td><strong>Stability (pH)</strong></td><td>Good (pH 2-9, depends on variation)</td><td>Depends on fraction/conditions</td><td>Poor (stable only low pH < 4-5)</td><td>Good (cross-linked)</td><td>Good (redispersed)</td></tr>
-                        <tr><td><strong>Stability (Ionic)</strong></td><td>Moderate to Good (depends on lignin/coating)</td><td>Depends on fraction/conditions</td><td>Likely poor (low charge)</td><td>Depends on residuals/cross-linking</td><td>Depends on redispersion medium</td></tr>
-                        <tr><td><strong>Advantages</strong></td><td>Good size/PDI control</td><td>Fast, simple setup</td><td>Aqueous route, pH-responsive</td><td>Good size control, func. potential</td><td>High throughput, dry product, size fractionation</td></tr>
-                        <tr><td><strong>Disadvantages</strong></td><td>Slow, scaling difficult, membrane</td><td>Poor control, high PDI, aggregation risk</td><td>Limited pH stability</td><td>Multi-step, surfactants, washing</td><td>Specialized equip., thermal effects?, redispersion</td></tr>
-                        <tr><td><strong>Applications</strong></td><td>Controlled release, coatings, fundamental studies</td><td>Bulk fillers, composites, initial screening</td><td>pH-triggered delivery</td><td>Pickering emulsions, carriers, functional materials</td><td>Pickering emulsions, coatings, dry formulations, size-specific uses</td></tr>
-                        <tr><td><strong>Key Refs</strong></td><td>Lievonen '16, Frangville '12, Richter '16, Venditti '21</td><td>Richter '16, Venditti '21</td><td>Frangville '12</td><td>Nypelö '15</td><td>Ago '16</td></tr>
+                        <tr><td><strong>Stability (pH)</strong></td><td>Poor (stable only low pH < 4-5)</td><td>Depends on fraction/conditions</td><td>Good (pH 2-9, depends on variation)</td><td>Good (cross-linked)</td><td>Good (redispersed)</td></tr>
+                        <tr><td><strong>Stability (Ionic)</strong></td><td>Likely poor (low charge)</td><td>Depends on fraction/conditions</td><td>Moderate to Good (depends on lignin/coating)</td><td>Depends on residuals/cross-linking</td><td>Depends on redispersion medium</td></tr>
+                        <tr><td><strong>Advantages</strong></td><td>Aqueous route, pH-responsive</td><td>Fast, simple setup</td><td>Good size/PDI control</td><td>Good size control, func. potential</td><td>High throughput, dry product, size fractionation</td></tr>
+                        <tr><td><strong>Disadvantages</strong></td><td>Limited pH stability</td><td>Poor control, high PDI, aggregation risk</td><td>Slow, scaling difficult, membrane</td><td>Multi-step, surfactants, washing</td><td>Specialized equip., thermal effects?, redispersion</td></tr>
+                        <tr><td><strong>Applications</strong></td><td>pH-triggered delivery</td><td>Bulk fillers, composites, initial screening</td><td>Controlled release, coatings, fundamental studies</td><td>Pickering emulsions, carriers, functional materials</td><td>Pickering emulsions, coatings, dry formulations, size-specific uses</td></tr>
+                        <tr><td><strong>Key Refs</strong></td><td>Frangville '12</td><td>Richter '16, Venditti '21</td><td>Lievonen '16, Frangville '12, Richter '16, Venditti '21</td><td>Nypelö '15</td><td>Ago '16</td></tr>
                     </tbody>
                 </table>
             </div>
              <h4 class="mt-8">Outlook & Future Directions</h4>
-             <p>The choice depends heavily on the desired outcome. For precision, Methods 1 & 4 excel. For speed, Method 2 is simple but uncontrolled. Method 3 offers unique pH-responsiveness. For high throughput and dry powders, Method 5 is superior. The use of <strong>fractionated lignin</strong> adds another layer of control, particularly for Methods 1, 2, and potentially 5. Key research directions include:</p>
+             <p>The choice depends heavily on the desired outcome. For precision, Methods 3 & 4 excel. For speed, Method 2 is simple but uncontrolled. Method 1 offers unique pH-responsiveness. For high throughput and dry powders, Method 5 is superior. The use of <strong>fractionated lignin</strong> adds another layer of control. Key research directions include:</p>
              <ul class="list-disc list-inside pl-4 mb-4 space-y-2">
-                 <li>Developing robust, scalable methods combining speed & control (e.g., flow chemistry, optimized aerosol reactors).</li>
-                 <li>Establishing clear structure-property-function relationships linking lignin source/fraction to LNP characteristics via different methods.</li>
-                 <li>Advanced surface functionalization strategies (e.g., PDAC coating).</li>
+                 <li>Developing robust, scalable methods combining speed & control.</li>
+                 <li>Establishing clear structure-property-function relationships linking lignin source/fraction/synthesis method to LNP and emulsion properties.</li>
+                 <li>Advanced surface functionalization strategies.</li>
                  <li>Comparative biological interaction, toxicology, and environmental fate studies.</li>
-                 <li>Leveraging unique features: dry powder handling (Method 5), pH-response (Method 3), template functionalization (Method 4), fraction-specific properties.</li>
+                 <li>Leveraging unique features for targeted applications (e.g., Pickering stabilization, controlled release, smart materials).</li>
              </ul>
-             <p>By mastering these diverse synthesis strategies and understanding the critical role of the lignin source material, you are well-equipped to design and optimize lignin nanomaterials for innovative sustainable applications.</p>
+             <p>By mastering these diverse synthesis strategies and understanding the critical role of the lignin source material, you are well-equipped to design and optimize lignin nanomaterials and their colloidal assemblies for innovative sustainable applications.</p>
         </section>
     </main>
      <footer class="mt-16 pt-10 pb-8 border-t border-gray-300 text-sm text-gray-600">
            <p class="footer-attribution">PhD Comprehensive Guide | Sustainable Materials Research</p>
            <p class="footer-attribution">
                References & Core Concepts Based On:
-               <a href="https://doi.org/10.1039/C5GC01431E" target="_blank" rel="noopener noreferrer" class="font-medium">Lievonen et al. (2016)</a> |
                <a href="https://doi.org/10.1002/cphc.201200537" target="_blank" rel="noopener noreferrer" class="font-medium">Frangville et al. (2012)</a> |
                <a href="https://doi.org/10.1039/c4sm02851a" target="_blank" rel="noopener noreferrer" class="font-medium">Nypelö et al. (2015)</a> |
+               <a href="https://doi.org/10.1039/C5GC01431E" target="_blank" rel="noopener noreferrer" class="font-medium">Lievonen et al. (2016)</a> |
                <a href="https://doi.org/10.1021/acsami.6b07900" target="_blank" rel="noopener noreferrer" class="font-medium">Ago et al. (2016)</a> |
                <a href="https://doi.org/10.1021/acs.langmuir.6b01088" target="_blank" rel="noopener noreferrer" class="font-medium">Richter et al. (2016)</a> |
                <a href="https://doi.org/10.1039/d0gc03632c" target="_blank" rel="noopener noreferrer" class="font-medium">Venditti et al. (2021)</a> |
+               <a href="https://doi.org/10.1016/j.cis.2024.103247" target="_blank" rel="noopener noreferrer" class="font-medium">Marquez et al. (2024 Review)</a> |
                General Colloid & Polymer Science Principles.
            </p>
      </footer>
@@ -309,13 +399,28 @@
             const valueAttr = options.valueAttr || 'value';
             const updateDisplay = () => { if (valueSpan) { valueSpan.textContent = formatFunc(slider[valueAttr]); } };
             if (options.initialValue !== undefined) { slider.value = options.initialValue; }
-            slider.addEventListener('input', updateDisplay); updateDisplay();
+            slider.addEventListener('input', () => { updateDisplay(); if (options.callback) { options.callback(); } });
+            updateDisplay();
         }
         let simConcentration = 5.0; let simRate = 5; let currentTimeoutId = null;
+        let emulLNPSize = 200; let emulLNPConc = 0.5; let emulShear = 5;
+        let dlvoZeta = -40; let dlvoRadius = 100; let dlvoIonicStrength = 10;
+
         function updateSimParameters() {
             const concSlider = document.getElementById('sim-conc-slider'); const rateSlider = document.getElementById('sim-rate-slider');
             if (concSlider) simConcentration = parseFloat(concSlider.value); if (rateSlider) simRate = parseFloat(rateSlider.value);
         }
+         function updateEmulParameters() {
+            const sizeSlider = document.getElementById('emul-lnp-size-slider'); const concSlider = document.getElementById('emul-lnp-conc-slider'); const shearSlider = document.getElementById('emul-shear-slider');
+            if (sizeSlider) emulLNPSize = parseFloat(sizeSlider.value); if (concSlider) emulLNPConc = parseFloat(concSlider.value); if (shearSlider) emulShear = parseFloat(shearSlider.value);
+            runEmulsionSimulation();
+        }
+         function updateDLVOParameters() {
+            const zetaSlider = document.getElementById('dlvo-zeta-slider'); const radiusSlider = document.getElementById('dlvo-radius-slider'); const ionicSlider = document.getElementById('dlvo-ionic-slider');
+            if (zetaSlider) dlvoZeta = parseFloat(zetaSlider.value); if (radiusSlider) dlvoRadius = parseFloat(radiusSlider.value); if (ionicSlider) dlvoIonicStrength = parseFloat(ionicSlider.value);
+            runDLVOSimulation();
+        }
+
         function createParticle(container, options = {}) {
              if (!container) { return null; }
             const particle = document.createElement('div'); particle.classList.add('sim-particle');
@@ -327,11 +432,22 @@
             setTimeout(() => { requestAnimationFrame(() => { if (document.body.contains(particle)) { particle.style.opacity = '1'; particle.style.transform = 'scale(1) translate(-50%, -50%)'; } }); }, delay);
             return particle;
         }
+         function createEmulsionDroplet(container, options = {}) {
+            if (!container) return null;
+            const droplet = document.createElement('div'); droplet.classList.add('emulsion-droplet');
+            const size = options.size || 20; const x = options.x || Math.random() * (100 - size/container.offsetWidth*100); const y = options.y || Math.random() * (100 - size/container.offsetHeight*100);
+            droplet.style.width = `${size}px`; droplet.style.height = `${size}px`; droplet.style.left = `${x}%`; droplet.style.top = `${y}%`;
+            const numLNPs = Math.max(5, Math.floor(size * 0.8));
+            for (let i = 0; i < numLNPs; i++) { const lnp = document.createElement('div'); lnp.classList.add('emulsion-lnp'); const angle = Math.random() * 2 * Math.PI; const lnpX = 50 + 45 * Math.cos(angle); const lnpY = 50 + 45 * Math.sin(angle); lnp.style.left = `${lnpX}%`; lnp.style.top = `${lnpY}%`; droplet.appendChild(lnp); }
+            container.appendChild(droplet); return droplet;
+        }
         function clearSimulation(containerId) {
             const container = document.getElementById(containerId); if (container) { container.innerHTML = ''; }
             const visualArea = container?.closest('.simulation-visual-area');
              if (visualArea) { const animatedElements = visualArea.querySelectorAll('.sim-water-drop, .sim-lignin-stream'); animatedElements.forEach(el => el.remove()); }
         }
+        function clearEmulsionSimulation() { const container = document.getElementById('emulsion-visual-area'); if (container) container.innerHTML = ''; }
+
         function runDialysisSimulation() {
             updateSimParameters(); const containerId = 'dialysis-particles'; clearSimulation(containerId); const container = document.getElementById(containerId); if (!container) { return; }
             const numParticles = Math.floor(10 + simConcentration * 1.5); const baseSize = 3 + simConcentration * 0.1; const sizeVariation = 2; const maxDelay = 3000; const aggregationChance = 0.02;
@@ -355,14 +471,104 @@
                 for (let i = 0; i < particlesPerEvent; i++) { const isAggregate = Math.random() < aggregationChance; const particleSize = baseSize + (Math.random() - 0.5) * sizeVariation; const finalSize = isAggregate ? particleSize * (1.6 + Math.random()*0.6) : particleSize; const particleDelay = eventDelay + Math.random() * eventInterval * 0.5 + 100; const xPos = 50 + (Math.random() - 0.5) * 40; const yPos = 70 + Math.random() * 25; createParticle(container, { size: finalSize, delay: particleDelay, isAggregate: isAggregate, duration: 300, x: xPos, y: yPos }); } }
             if (currentTimeoutId) clearTimeout(currentTimeoutId); currentTimeoutId = setTimeout(() => disableSimButtons(false), totalDuration + 200);
         }
+         function runEmulsionSimulation() {
+            const container = document.getElementById('emulsion-visual-area'); const sizeDisplay = document.getElementById('emul-res-size');
+            if (!container || !sizeDisplay) return; clearEmulsionSimulation();
+            const baseDropletSizePx = 60; const lnpSizeEffect = (emulLNPSize / 1000) * 30; const lnpConcEffect = (emulLNPConc / 2.0) * 40; const shearEffect = (emulShear / 10) * 30;
+            let dropletSizePx = baseDropletSizePx + lnpSizeEffect - lnpConcEffect - shearEffect; dropletSizePx = Math.max(10, Math.min(100, dropletSizePx));
+            let estimatedSizeUm = 5 + Math.pow(dropletSizePx / 15, 1.5); estimatedSizeUm = Math.max(1, Math.min(100, estimatedSizeUm)); sizeDisplay.textContent = estimatedSizeUm.toFixed(1);
+            const containerWidth = container.offsetWidth; const containerHeight = container.offsetHeight; const totalDropletArea = Math.pow(dropletSizePx / 2, 2) * Math.PI;
+            const maxDroplets = Math.floor((containerWidth * containerHeight * 0.6) / totalDropletArea); const numDroplets = Math.min(50, maxDroplets > 0 ? maxDroplets : 1);
+            for (let i = 0; i < numDroplets; i++) { const sizeVariation = dropletSizePx * (Math.random() * 0.4 - 0.2); createEmulsionDroplet(container, { size: Math.max(5, dropletSizePx + sizeVariation) }); }
+        }
+         function runDLVOSimulation() {
+            const vmaxDisplay = document.getElementById('dlvo-vmax'); const vminDisplay = document.getElementById('dlvo-vmin'); const plotPath = document.getElementById('dlvo-curve-path'); const zeroLine = document.getElementById('dlvo-zero');
+            if (!vmaxDisplay || !vminDisplay || !plotPath || !zeroLine) return;
+
+            const R = dlvoRadius * 1e-9; // m
+            const zeta = dlvoZeta * 1e-3; // V
+            const I = dlvoIonicStrength * 1e-3; // M (mol/L)
+            const A = 1.7e-20; // Hamaker constant for lignin (approx, J)
+            const epsilon_r = 78.5; // Relative permittivity of water
+            const epsilon_0 = 8.854e-12; // Permittivity of free space (F/m)
+            const e = 1.602e-19; // Elementary charge (C)
+            const N_A = 6.022e23; // Avogadro's number (mol^-1)
+            const k_B = 1.381e-23; // Boltzmann constant (J/K)
+            const T = 298.15; // Temperature (K)
+
+            // Calculate Debye length kappa^-1 (m)
+            const kappa_sq = (2 * N_A * e*e * I * 1000) / (epsilon_0 * epsilon_r * k_B * T); // I*1000 converts M to mol/m^3
+            const kappa = Math.sqrt(kappa_sq);
+            const debyeLength = 1 / kappa;
+
+            // Simplified DLVO equations for interaction energy V(D) in units of kT
+            // V_total(D) = V_vdW(D) + V_elec(D)
+            // V_vdW(D) = - (A * R) / (12 * D * k_B * T)  (for D << R)
+            // V_elec(D) = (64 * pi * epsilon_0 * epsilon_r * R * (k_B * T / e)^2 * tanh(e * zeta / (4 * k_B * T))^2 * exp(-kappa * D)) / (k_B * T)
+            // Simplified further using gamma = tanh(e*zeta / (4*k_B*T))
+            // V_elec(D) = (64 * pi * epsilon_0 * epsilon_r * R * (k_B * T / e)^2 * gamma^2 * exp(-kappa * D)) / (k_B * T)
+
+            const gamma = Math.tanh(e * zeta / (4 * k_B * T));
+            const elec_prefactor = 64 * Math.PI * epsilon_0 * epsilon_r * R * Math.pow(k_B * T / e, 2) * gamma*gamma / (k_B * T);
+
+            let V_max = 0;
+            let V_min = 0;
+            let pathData = "M 20 100"; // Start at y=0 equivalent
+            const plotWidth = 260; // Width of plot area in SVG units
+            const plotHeight = 160; // Height of plot area
+            const yCenter = 100; // Y position corresponding to 0 energy
+            const maxDistNM = 50; // Max distance to plot in nm
+            const scaleY = 10; // Scale factor for energy (kT) to pixels
+
+            for (let i = 1; i <= plotWidth; i++) {
+                const D_nm = (i / plotWidth) * maxDistNM; // Distance in nm
+                const D = D_nm * 1e-9; // Distance in m
+
+                if (D === 0) continue; // Avoid division by zero
+
+                const V_vdW = - (A * R) / (12 * D * k_B * T);
+                const V_elec = elec_prefactor * Math.exp(-kappa * D);
+                const V_total = V_vdW + V_elec;
+
+                if (V_total > V_max) V_max = V_total;
+                if (V_total < V_min && D_nm > 1) V_min = V_total; // Look for secondary minimum beyond ~1nm
+
+                // Scale to SVG coordinates
+                const svgX = 20 + i;
+                let svgY = yCenter - V_total * scaleY;
+                svgY = Math.max(20, Math.min(180, svgY)); // Clamp Y within plot bounds
+
+                pathData += ` L ${svgX} ${svgY}`;
+            }
+
+            vmaxDisplay.textContent = V_max > 0 ? V_max.toFixed(1) : "0";
+            vminDisplay.textContent = V_min < -0.1 ? V_min.toFixed(1) : "0"; // Show only significant minima
+            plotPath.setAttribute('d', pathData);
+            zeroLine.setAttribute('y1', yCenter); zeroLine.setAttribute('y2', yCenter);
+        }
+
         function disableSimButtons(disable) {
              const btn1 = document.getElementById('run-dialysis-btn'); const btn2 = document.getElementById('run-lignin-to-water-btn'); const btn3 = document.getElementById('run-water-to-lignin-btn');
              if(btn1) btn1.disabled = disable; if(btn2) btn2.disabled = disable; if(btn3) btn3.disabled = disable;
         }
         document.addEventListener('DOMContentLoaded', () => {
-            setupSlider('sim-conc-slider', 'sim-conc-value', {decimals: 1, initialValue: 5.0}); setupSlider('sim-rate-slider', 'sim-rate-value', {decimals: 0, initialValue: 5});
-            document.getElementById('run-dialysis-btn')?.addEventListener('click', runDialysisSimulation); document.getElementById('run-lignin-to-water-btn')?.addEventListener('click', runLigninToWaterSimulation); document.getElementById('run-water-to-lignin-btn')?.addEventListener('click', runWaterToLigninSimulation);
+            setupSlider('sim-conc-slider', 'sim-conc-value', {decimals: 1, initialValue: 5.0});
+            setupSlider('sim-rate-slider', 'sim-rate-value', {decimals: 0, initialValue: 5});
+            setupSlider('emul-lnp-size-slider', 'emul-lnp-size-value', {decimals: 0, initialValue: 200, callback: updateEmulParameters});
+            setupSlider('emul-lnp-conc-slider', 'emul-lnp-conc-value', {decimals: 1, initialValue: 0.5, callback: updateEmulParameters});
+            setupSlider('emul-shear-slider', 'emul-shear-value', {decimals: 0, initialValue: 5, callback: updateEmulParameters});
+            setupSlider('dlvo-zeta-slider', 'dlvo-zeta-value', {decimals: 0, initialValue: -40, callback: updateDLVOParameters});
+            setupSlider('dlvo-radius-slider', 'dlvo-radius-value', {decimals: 0, initialValue: 100, callback: updateDLVOParameters});
+            setupSlider('dlvo-ionic-slider', 'dlvo-ionic-value', {decimals: 0, initialValue: 10, callback: updateDLVOParameters});
+
+            document.getElementById('run-dialysis-btn')?.addEventListener('click', runDialysisSimulation);
+            document.getElementById('run-lignin-to-water-btn')?.addEventListener('click', runLigninToWaterSimulation);
+            document.getElementById('run-water-to-lignin-btn')?.addEventListener('click', runWaterToLigninSimulation);
+
             disableSimButtons(false);
+            runEmulsionSimulation(); // Initial run for emulsion sim
+            runDLVOSimulation(); // Initial run for DLVO sim
+
             if (typeof MathJax !== 'undefined' && MathJax.startup) { MathJax.startup.promise.then(() => {}).catch(err => console.error('MathJax startup error:', err)); } else {}
         });
     </script>
