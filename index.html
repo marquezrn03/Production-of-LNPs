@@ -158,32 +158,7 @@
                 <li><strong>Colloidal Stabilization & Aggregation/Fusion:</strong> LNPs require stabilization (electrostatic/steric). DLVO theory describes electrostatic/vdW forces. However, high surface energy (small size, hydrophobic) can drive aggregation/fusion (<a href="https://doi.org/10.1039/d0gc03632c" target="_blank" rel="noopener noreferrer">Zwilling et al. 2021</a>). Stabilization mechanisms can differ: Organosolv HPL NPs seem primarily electrostatic (low salt stability), while Kraft Indulin AT NPs show high salt stability, suggesting additional steric/hydration forces (<a href="https://doi.org/10.1021/acs.langmuir.6b01088" target="_blank" rel="noopener noreferrer">Richter et al. 2016</a>). Aerosol particles (Method 5) are collected dry and require effective redispersion strategies.</li>
                 <li><strong>Concentration Effects ($C_0$ & Scaling):</strong> Below a critical concentration ($C_0$) during solvent shifting, apparent DLS size can increase due to aggregation/fusion (<a href="https://doi.org/10.1039/d0gc03632c" target="_blank" rel="noopener noreferrer">Zwilling et al. 2021</a>). Conversely, above $C_0$, size generally increases with concentration following mass balance ($D \propto C^{1/3}$) as seen for HPL NPs (Method 2, <a href="https://doi.org/10.1021/acs.langmuir.6b01088" target="_blank" rel="noopener noreferrer">Richter et al. 2016</a>) and aerosol particles (Method 5, <a href="https://doi.org/10.1021/acsami.6b07900" target="_blank" rel="noopener noreferrer">Ago et al. 2016</a>).</li>
             </ol>
-
-            <h3 class="!mt-8">Pickering Emulsion Stabilization Principles</h3>
-            <p>Once formed, LNPs can stabilize emulsions (dispersions of immiscible liquids like oil and water) via the Pickering mechanism, where solid particles replace traditional surfactants at the interface:</p>
-            <div class="flex flex-col md:flex-row items-center gap-4 my-4">
-                 <div class="text-center">
-                    <svg width="120" height="80" viewBox="0 0 120 80">
-                      <defs>
-                        <clipPath id="clipCircle"> <circle cx="60" cy="40" r="30"/> </clipPath>
-                      </defs>
-                      <circle cx="60" cy="40" r="30" fill="var(--oil-drop-color)" stroke="var(--secondary-color)" stroke-width="1"/>
-                      <rect x="0" y="40" width="120" height="40" fill="var(--accent-blue-light)" />
-                      <circle cx="60" cy="40" r="8" fill="var(--primary-color)" stroke="var(--primary-darker)" stroke-width="0.5" clip-path="url(#clipCircle)"/>
-                      <line x1="60" y1="40" x2="85" y2="40" stroke="#333" stroke-width="0.5"/>
-                      <line x1="60" y1="40" x2="70" y2="60" stroke="#333" stroke-width="0.5"/>
-                      <path d="M 65 40 A 5 5 0 0 1 67 44" fill="none" stroke="#333" stroke-width="0.5"/>
-                      <text x="70" y="50" font-size="8px" fill="#333">θ</text>
-                    </svg>
-                    <p class="text-sm mt-1">LNP at O/W Interface</p>
-                 </div>
-                 <ol class="list-decimal list-inside pl-4 space-y-4 flex-1">
-                    <li><strong>Interfacial Adsorption:</strong> Solid particles (LNPs) adsorb to the oil-water interface, reducing the thermodynamically unfavorable contact area between the two phases. The energy required to desorb a particle ($\Delta G_{des}$) is high, making the adsorption effectively irreversible, especially for particles with intermediate wettability. $\Delta G_{des} = \pi R^2 \gamma_{ow} (1 \pm \cos\theta)^2$, where R is particle radius, $\gamma_{ow}$ is interfacial tension, and $\theta$ is the contact angle. For $\Delta G_{des} \gg kT$ (thermal energy), particles are strongly anchored.</li>
-                    <li><strong>Wettability & Contact Angle ($\theta$):</strong> The particle's affinity for oil vs. water, quantified by $\theta$ (measured through the water phase, see schematic), is critical. Lignin's amphiphilicity often leads to intermediate wettability ($\theta$ near $90^\circ$ but typically $<90^\circ$ for many technical lignins, favoring O/W stabilization). More hydrophilic particles (lower $\theta$, e.g., Kraft Lignin) tend to stabilize O/W emulsions better than less hydrophilic ones (e.g., Organosolv Lignin) (<a href="https://doi.org/10.1021/acsami.6b07900" target="_blank" rel="noopener noreferrer">Ago et al. 2016</a>).</li>
-                    <li><strong>Steric Barrier Formation:</strong> Adsorbed particles form a physical (steric) barrier preventing droplet coalescence. Barrier robustness depends on particle size, shape, concentration (surface coverage), and inter-particle interactions at the interface (forming a 2D network).</li>
-                    <li><strong>Network Formation (Continuous Phase):</strong> Excess, non-adsorbed particles in the continuous phase can sometimes form a weak 3D gel network, further hindering creaming/sedimentation by increasing viscosity.</li>
-                </ol>
-            </div>
+            
 
              <div class="interactive-block mt-12">
                  <h4 class="text-center !mt-0 !border-b-0">Interactive DLVO Simulation: Colloidal Stability</h4>
@@ -400,8 +375,33 @@
              </div>
         </section>
         <section id="pickering-emulsions" class="mb-16 p-8 rounded-lg shadow-lg section-bg-white">
-            <h2 >Application Focus: LNP-Stabilized Pickering Emulsions</h2>
-            <p>A major application harnessing the colloidal nature of LNPs is the stabilization of Pickering emulsions. Here, LNPs adsorb irreversibly at the oil-water interface, creating a robust steric barrier that prevents droplet coalescence. This section draws heavily on the comprehensive review by <a href="https://doi.org/10.1016/j.cis.2024.103247" target="_blank" rel="noopener noreferrer">Marquez et al. (2024)</a> and examples using aerosol-generated particles by <a href="https://doi.org/10.1021/acsami.6b07900" target="_blank" rel="noopener noreferrer">Ago et al. (2016)</a>.</p>
+            <h2 >LNP-Stabilized Pickering Emulsions</h2>
+           <div class="flex flex-col md:flex-row items-center gap-4 my-4">
+                 <div class="text-center">
+                    <svg width="120" height="80" viewBox="0 0 120 80">
+                      <defs>
+                        <clipPath id="clipCircle"> <circle cx="60" cy="40" r="30"/> </clipPath>
+                      </defs>
+                      <circle cx="60" cy="40" r="30" fill="var(--oil-drop-color)" stroke="var(--secondary-color)" stroke-width="1"/>
+                      <rect x="0" y="40" width="120" height="40" fill="var(--accent-blue-light)" />
+                      <circle cx="60" cy="40" r="8" fill="var(--primary-color)" stroke="var(--primary-darker)" stroke-width="0.5" clip-path="url(#clipCircle)"/>
+                      <line x1="60" y1="40" x2="85" y2="40" stroke="#333" stroke-width="0.5"/>
+                      <line x1="60" y1="40" x2="70" y2="60" stroke="#333" stroke-width="0.5"/>
+                      <path d="M 65 40 A 5 5 0 0 1 67 44" fill="none" stroke="#333" stroke-width="0.5"/>
+                      <text x="70" y="50" font-size="8px" fill="#333">θ</text>
+                    </svg>
+                    <p class="text-sm mt-1">LNP at O/W Interface</p>
+                 </div>
+                 <ol class="list-decimal list-inside pl-4 space-y-4 flex-1">
+                    <h3 class="!mt-8">Pickering Emulsion Stabilization Principles</h3>
+            <p>Once formed, LNPs can stabilize emulsions (dispersions of immiscible liquids like oil and water) via the Pickering mechanism, where solid particles replace traditional surfactants at the interface:</p>
+                     <li><strong>Interfacial Adsorption:</strong> Solid particles (LNPs) adsorb to the oil-water interface, reducing the thermodynamically unfavorable contact area between the two phases. The energy required to desorb a particle ($\Delta G_{des}$) is high, making the adsorption effectively irreversible, especially for particles with intermediate wettability. $\Delta G_{des} = \pi R^2 \gamma_{ow} (1 \pm \cos\theta)^2$, where R is particle radius, $\gamma_{ow}$ is interfacial tension, and $\theta$ is the contact angle. For $\Delta G_{des} \gg kT$ (thermal energy), particles are strongly anchored.</li>
+                    <li><strong>Wettability & Contact Angle ($\theta$):</strong> The particle's affinity for oil vs. water, quantified by $\theta$ (measured through the water phase, see schematic), is critical. Lignin's amphiphilicity often leads to intermediate wettability ($\theta$ near $90^\circ$ but typically $<90^\circ$ for many technical lignins, favoring O/W stabilization). More hydrophilic particles (lower $\theta$, e.g., Kraft Lignin) tend to stabilize O/W emulsions better than less hydrophilic ones (e.g., Organosolv Lignin) (<a href="https://doi.org/10.1021/acsami.6b07900" target="_blank" rel="noopener noreferrer">Ago et al. 2016</a>).</li>
+                    <li><strong>Steric Barrier Formation:</strong> Adsorbed particles form a physical (steric) barrier preventing droplet coalescence. Barrier robustness depends on particle size, shape, concentration (surface coverage), and inter-particle interactions at the interface (forming a 2D network).</li>
+                    <li><strong>Network Formation (Continuous Phase):</strong> Excess, non-adsorbed particles in the continuous phase can sometimes form a weak 3D gel network, further hindering creaming/sedimentation by increasing viscosity.</li>
+                </ol>
+            </div>
+            <p>A major application harnessing the colloidal nature of LNPs is the stabilization of Pickering emulsions. Here, LNPs adsorb irreversibly at the oil-water interface, creating a robust steric barrier that prevents droplet coalescence. This section draws heavily on examples using aerosol-generated particles by <a href="https://doi.org/10.1021/acsami.6b07900" target="_blank" rel="noopener noreferrer">Ago et al. (2016)</a>.</p>
             <h3>Principles & Key Parameters Influencing Emulsion Properties</h3>
              <ul class="list-disc list-inside pl-4 mb-6 space-y-2">
                  <li><strong>Wettability & Contact Angle ($\theta$):</strong> As discussed (see Principles section), lignin's amphiphilicity typically results in contact angles favoring O/W stabilization ($\theta < 90^\circ$). More hydrophilic particles (lower $\theta$, e.g., Kraft Lignin) tend to stabilize O/W emulsions better than less hydrophilic ones (e.g., Organosolv Lignin) (<a href="https://doi.org/10.1021/acsami.6b07900" target="_blank" rel="noopener noreferrer">Ago et al. 2016</a>).</li>
