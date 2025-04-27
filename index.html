@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PhD Masterclass: Comprehensive Guide to Lignin Nanoparticle Synthesis Methods</title>
+    <title>A Short Guide to Lignin Nanoparticle Synthesis Methods</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }, svg: { fontCache: 'global' } };
@@ -109,24 +109,7 @@
             <p>Lignin, nature's intricate aromatic polymer, presents both a challenge and a profound opportunity. Its inherent heterogeneity and complex structure make controlled processing difficult, yet its abundance and intrinsic properties make it an ideal candidate for creating sustainable, high-value nanomaterials. This guide focuses on transforming bulk lignin into Lignin Nanoparticles (LNPs) using diverse synthesis strategies.</p>
             <p>We will cover five key approaches: <strong>dialysis</strong> (Method 1), <strong>rapid precipitation (L→W)</strong> (Method 2), <strong>acid precipitation from high pH</strong> (Method 3), <strong>W/O microemulsion templating</strong> (Method 4), and <strong>aerosol flow reaction</strong> (Method 5). Detailed protocols are provided, alongside discussions on the critical role of process dynamics, templating, drying kinetics, and importantly, the influence of the starting lignin's inherent heterogeneity and potential <strong>fractionation</strong>. Understanding these differences is paramount for rational design and optimization.</p>
         </section>
-        <section id="lignin-source" class="mb-16 p-8 rounded-lg shadow-lg section-bg-white">
-            <h2 >Lignin Source Material: Heterogeneity & Fractionation</h2>
-            <p>Technical lignins (Kraft, Organosolv, etc.) are inherently heterogeneous in MW, PDI, and functional groups. This significantly impacts LNP formation. <strong>Fractionation</strong> using organic solvents is key to obtaining more homogeneous fractions.</p>
-            <p>As demonstrated by <a href="https://doi.org/10.1039/d0gc03632c" target="_blank" rel="noopener noreferrer">Venditti et al. (2021)</a>, sequential extraction of Kraft lignin (KL) yields distinct fractions:</p>
-            <ul>
-                <li><strong>Ethanol-Soluble (E-Frac):</strong> Lowest MW, most hydrophilic.</li>
-                <li><strong>Acetone-Soluble (A-Frac):</strong> Intermediate MW/hydrophilicity.</li>
-                <li><strong>THF-Soluble (T-Frac):</strong> Highest MW, most hydrophobic.</li>
-            </ul>
-            <p>Using these fractions leads to different LNP characteristics via solvent shifting (Methods 1, 2, 3). E-Frac $\rightarrow$ larger, softer, aggregated particles; T-Frac $\rightarrow$ smaller initial particles prone to aggregation; A-Frac $\rightarrow$ often well-defined, stable particles. Characterizing your starting lignin (whole or fractionated) via GPC and NMR is crucial.</p>
-            <h4>Fractionation Protocol Example (Venditti et al. 2021)</h4>
-             <ol class="list-decimal list-inside pl-6 space-y-2 text-base">
-                 <li>~1 g dry KL + 40 mL anhydrous ethanol. Vortex. Centrifuge. Decant supernatant (E-Frac soln).</li>
-                 <li>To pellet, add 40 mL anhydrous acetone. Vortex. Centrifuge. Decant supernatant (A-Frac soln).</li>
-                 <li>To pellet, add 40 mL anhydrous THF. Vortex. Centrifuge. Decant supernatant (T-Frac soln). Discard pellet.</li>
-                 <li>Evaporate solvent from each fraction soln. Dry thoroughly before use.</li>
-             </ol>
-        </section>
+        
         <section id="principle" class="mb-16 p-8 rounded-lg shadow-lg section-bg-light">
             <h2 >Underlying Science: Driving Forces & Mechanisms</h2>
             <p>LNP formation relies on inducing controlled phase separation, templated solidification, or rapid drying.</p>
@@ -240,6 +223,24 @@
             <p>Comprehensive characterization is non-negotiable across all synthesis routes.</p>
              <ul class="list-disc list-inside pl-4 mb-4 space-y-3"><li><strong>DLS:</strong> $D_h$ & PDI. Compare methods. Assess redispersibility (Method 5).</li><li><strong>Zeta Potential:</strong> Stability vs pH/ionic strength. Compare profiles. Note Method 3 sensitivity. Method 4/5 depend on residuals/medium/surface.</li><li><strong>EM (TEM/SEM):</strong> Morphology, size, aggregation. Check Method 5 integrity post-redispersion. Method 4 porosity.</li><li><strong>AFM:</strong> 3D topography, surface texture.</li><li><strong>Spectroscopy (FTIR/NMR):</strong> Chemical fidelity, residuals. Check thermal effects (Method 5). ${}^{31}$P NMR crucial for OH groups if using fractions.</li><li><strong>Chromatography (SEC/GPC):</strong> MW integrity (degradation/fractionation). Essential for fractionated lignin.</li><li><strong>Quantification:</strong> Yield comparison. Method 5 yield from dry mass.</li><li><strong>Method 4 Specifics:</strong> Analyze residual surfactants, confirm cross-linking.</li><li><strong>Method 5 Specifics:</strong> Thermal analysis (TGA/DSC), Surface analysis (XPS).</li></ul>
              <div class="critical-note"><strong>Holistic Comparison:</strong> Evaluate methods based on size, PDI, yield, reproducibility, stability, purity, scalability, speed, safety, environmental impact, suitability for modification (e.g., PDAC coating), and compatibility with starting material (whole vs. fractionated lignin).</div>
+        </section>
+                  <section id="lignin-source" class="mb-16 p-8 rounded-lg shadow-lg section-bg-white">
+            <h2 >Lignin Source Material: Heterogeneity & Fractionation</h2>
+            <p>Technical lignins (Kraft, Organosolv, etc.) are inherently heterogeneous in MW, PDI, and functional groups. This significantly impacts LNP formation. <strong>Fractionation</strong> using organic solvents is key to obtaining more homogeneous fractions.</p>
+            <p>As demonstrated by <a href="https://doi.org/10.1039/d0gc03632c" target="_blank" rel="noopener noreferrer">Venditti et al. (2021)</a>, sequential extraction of Kraft lignin (KL) yields distinct fractions:</p>
+            <ul>
+                <li><strong>Ethanol-Soluble (E-Frac):</strong> Lowest MW, most hydrophilic.</li>
+                <li><strong>Acetone-Soluble (A-Frac):</strong> Intermediate MW/hydrophilicity.</li>
+                <li><strong>THF-Soluble (T-Frac):</strong> Highest MW, most hydrophobic.</li>
+            </ul>
+            <p>Using these fractions leads to different LNP characteristics via solvent shifting (Methods 1, 2, 3). E-Frac $\rightarrow$ larger, softer, aggregated particles; T-Frac $\rightarrow$ smaller initial particles prone to aggregation; A-Frac $\rightarrow$ often well-defined, stable particles. Characterizing your starting lignin (whole or fractionated) via GPC and NMR is crucial.</p>
+            <h4>Fractionation Protocol Example (Venditti et al. 2021)</h4>
+             <ol class="list-decimal list-inside pl-6 space-y-2 text-base">
+                 <li>~1 g dry KL + 40 mL anhydrous ethanol. Vortex. Centrifuge. Decant supernatant (E-Frac soln).</li>
+                 <li>To pellet, add 40 mL anhydrous acetone. Vortex. Centrifuge. Decant supernatant (A-Frac soln).</li>
+                 <li>To pellet, add 40 mL anhydrous THF. Vortex. Centrifuge. Decant supernatant (T-Frac soln). Discard pellet.</li>
+                 <li>Evaporate solvent from each fraction soln. Dry thoroughly before use.</li>
+             </ol>
         </section>
          <section id="comparison-outlook" class="mb-16 p-8 rounded-lg shadow-lg section-bg-light">
             <h2 >Comprehensive Comparison & Outlook</h2>
