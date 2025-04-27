@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PhD Masterclass: Lignin Nanoparticles - Synthesis, Fractionation, and Emulsion Stabilization</title>
+    <title>Lignin Nanoparticles - Synthesis, and Emulsion Stabilization</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <script>
@@ -128,91 +128,15 @@
 <body class="bg-gray-100 text-gray-800 antialiased">
     <header class="bg-gradient-to-r from-yellow-600 via-amber-600 to-yellow-700 text-white shadow-lg sticky top-0 z-50">
         <div class="container mx-auto px-8 py-6">
-              <h1 class="text-3xl md:text-4xl font-bold">PhD Masterclass: Comprehensive Guide to Lignin Nanoparticle Synthesis & Emulsion Stabilization</h1>
-            <p class="text-xl font-semibold mt-2">Source Material, Synthesis Methods, Pickering Emulsions & Applications</p>
+              <h1 class="text-3xl md:text-4xl font-bold">Lignin Nanoparticle Synthesis & Emulsion Stabilization</h1>
+            <p class="text-xl font-semibold mt-2">A Short Guide</p>
         </div>
     </header>
     <main class="container mx-auto px-8 py-12">
         <section id="intro" class="mb-16 p-8 rounded-lg shadow-xl section-bg-white">
             <h2 >Introduction: From Bulk Polymer to Functional Colloidal Systems</h2>
-            <p>Lignin, nature's intricate aromatic polymer, presents both a challenge and a profound opportunity. Its inherent heterogeneity and complex structure make controlled processing difficult, yet its abundance and intrinsic properties make it an ideal candidate for creating sustainable, high-value nanomaterials. This masterclass focuses on transforming bulk lignin into Lignin Nanoparticles (LNPs) using diverse synthesis strategies and subsequently utilizing these particles as stabilizers for Pickering emulsions.</p>
-            <p>We will cover five key LNP synthesis approaches, ordered by conceptual development and increasing complexity where appropriate: <strong>acid precipitation</strong> (Method 1, including aqueous and non-aqueous variants), <strong>rapid precipitation/solvent shifting</strong> (Method 2), <strong>dialysis</strong> (Method 3), <strong>W/O microemulsion templating</strong> (Method 4), and <strong>aerosol flow reaction</strong> (Method 5). Detailed protocols are provided, alongside discussions on the critical role of process dynamics (nucleation, growth, aggregation), templating, drying kinetics, and importantly, the influence of the starting lignin's inherent heterogeneity and potential <strong>fractionation</strong>. We will then delve into the principles and practice of forming LNP-stabilized Pickering emulsions, exploring how LNP properties (size, wettability, charge) and processing conditions dictate emulsion characteristics. Understanding this entire cascade—from lignin source to final emulsion properties—is paramount for rational design and innovation.</p>
-        </section>
-
-        <section id="lignin-source" class="mb-16 p-8 rounded-lg shadow-lg section-bg-white">
-            <h2 >Foundation: Lignin Source Material - Heterogeneity & Fractionation</h2>
-            <p>Before discussing synthesis, we must acknowledge the starting point: technical lignins (Kraft, Organosolv, Alkali, etc.) are inherently heterogeneous in molecular weight (MW), polydispersity (PDI), and functional group content (-OH, -COOH, -OCH$_3$, residual S). This significantly impacts LNP formation pathways (nucleation, growth rates) and final particle properties (size, surface chemistry, stability, morphology). For instance, Kraft lignin (e.g., Indulin AT) tends to form irregularly shaped NPs, while Organosolv lignin (e.g., HPL) often yields more spheroidal particles via solvent shifting (<a href="https://doi.org/10.1021/acs.langmuir.6b01088" target="_blank" rel="noopener noreferrer">Richter et al. 2016</a>).</p>
-            <p><strong>Fractionation</strong> using organic solvents is key to obtaining more homogeneous lignin fractions prior to LNP synthesis. As demonstrated by <a href="https://doi.org/10.1039/d0gc03632c" target="_blank" rel="noopener noreferrer">Venditti et al. (2021)</a>, sequential extraction of Kraft lignin (KL) with solvents of differing polarity yields distinct fractions:</p>
-            <ul>
-                <li><strong>Ethanol-Soluble (E-Frac):</strong> Lowest MW, highest phenolic -OH content, most hydrophilic.</li>
-                <li><strong>Acetone-Soluble (A-Frac):</strong> Intermediate MW/hydrophilicity.</li>
-                <li><strong>THF-Soluble (T-Frac):</strong> Highest MW, lowest phenolic -OH content, most hydrophobic.</li>
-            </ul>
-            <p>Using these fractions leads to different LNP characteristics via solvent shifting (Methods 2, 3), as reported by <a href="https://doi.org/10.1039/d0gc03632c" target="_blank" rel="noopener noreferrer">Venditti et al. (2021)</a>:</p>
-            <ul>
-                <li><strong>E-Frac:</strong> Higher hydrophilicity leads to larger DLS sizes. TEM reveals "soft" (less dense, potentially swollen/hydrated), metastable particles that readily deform and fuse, especially at higher lignin concentrations.</li>
-                <li><strong>A-Frac:</strong> Often represents a good balance, yielding well-defined, relatively stable spherical particles with good homogeneity.</li>
-                <li><strong>T-Frac:</strong> Higher hydrophobicity drives faster nucleation, forming smaller primary particles (seen in TEM). However, these smaller particles possess high surface energy, leading to significant aggregation and fusion, resulting in larger apparent sizes in DLS, similar to A-LPs.</li>
-            </ul>
-             <p>Characterizing your starting lignin (whole or fractionated) via GPC (MW, PDI) and NMR/FTIR (functional groups) is crucial for understanding and predicting LNP formation.</p>
-             <div class="critical-note"><strong>Applying Fractionation:</strong> In principle, fractionation can be applied before any method starting with dissolved lignin (Methods 2, 3, 4, 5) to potentially improve control over LNP properties. Method 1 typically uses whole alkali-soluble lignin.</div>
-            <h4>Fractionation Protocol Example (Venditti et al. 2021)</h4>
-             <ol class="list-decimal list-inside pl-6 space-y-2 text-base">
-                  <li>~1 g dry KL + 40 mL anhydrous ethanol. Vortex. Centrifuge. Decant supernatant (E-Frac soln).</li>
-                  <li>To pellet, add 40 mL anhydrous acetone. Vortex. Centrifuge. Decant supernatant (A-Frac soln).</li>
-                  <li>To pellet, add 40 mL anhydrous THF. Vortex. Centrifuge. Decant supernatant (T-Frac soln). Discard pellet.</li>
-                  <li>Evaporate solvent from each fraction soln. Dry thoroughly before use.</li>
-             </ol>
-             <h4 class="!mt-8 !mb-4 !border-b-0">Conceptual Visualization: Solvent Fractionation & LNP Formation</h4>
-             <div class="visualization-container fractionation-vis">
-                  <div class="fractionation-step">
-                      <div class="vis-label">Ethanol Extraction</div>
-                      <div class="fractionation-solvent" style="background-color: var(--ethanol-color); color: #065f46;">Ethanol</div>
-                      <p class="text-sm">Extracts Low MW / Hydrophilic (E-Frac)</p>
-                      <div class="vis-label mt-4">Resulting E-LPs</div>
-                      <div class="fractionation-result" title="Larger DLS size; 'Soft', metastable, fused particles (TEM)">
-                          <div class="fractionation-lignin" style="width:15px; height:15px; opacity:0.7;"></div>
-                          <div class="fractionation-lignin" style="width:18px; height:18px; opacity:0.6;"></div>
-                          <div class="fractionation-lignin" style="width:16px; height:16px; opacity:0.7;"></div>
-                          <div class="fractionation-lignin" style="width:17px; height:17px; opacity:0.5;"></div>
-                          <div class="fractionation-lignin" style="width:15px; height:15px; opacity:0.6;"></div>
-                      </div>
-                      <p class="text-sm mt-2">(Conceptual Size: Large, Fused)</p>
-                  </div>
-                  <div class="vis-arrow">➔</div>
-                  <div class="fractionation-step">
-                      <div class="vis-label">Acetone Extraction</div>
-                      <div class="fractionation-solvent" style="background-color: var(--acetone-color); color: #9f1239;">Acetone</div>
-                      <p class="text-sm">Extracts Medium MW / Intermediate (A-Frac)</p>
-                      <div class="vis-label mt-4">Resulting A-LPs</div>
-                      <div class="fractionation-result" title="Well-defined, stable spherical particles (TEM)">
-                          <div class="fractionation-lignin" style="width:10px; height:10px;"></div>
-                          <div class="fractionation-lignin" style="width:12px; height:12px;"></div>
-                          <div class="fractionation-lignin" style="width:11px; height:11px;"></div>
-                          <div class="fractionation-lignin" style="width:10px; height:10px;"></div>
-                          <div class="fractionation-lignin" style="width:12px; height:12px;"></div>
-                          <div class="fractionation-lignin" style="width:11px; height:11px;"></div>
-                      </div>
-                       <p class="text-sm mt-2">(Conceptual Size: Small/Medium)</p>
-                  </div>
-                   <div class="vis-arrow">➔</div>
-                  <div class="fractionation-step">
-                      <div class="vis-label">THF Extraction</div>
-                      <div class="fractionation-solvent" style="background-color: var(--thf-color); color: #1e40af;">THF</div>
-                       <p class="text-sm">Extracts High MW / Hydrophobic (T-Frac)</p>
-                      <div class="vis-label mt-4">Resulting T-LPs</div>
-                      <div class="fractionation-result" title="Small primary particles (TEM), but aggregated/fused (larger DLS size)">
-                          <div class="fractionation-lignin" style="width:8px; height:8px;"></div>
-                          <div class="fractionation-lignin" style="width:7px; height:7px;"></div>
-                          <div class="fractionation-lignin" style="width:9px; height:9px;"></div>
-                          <div class="fractionation-lignin" style="width:8px; height:8px;"></div>
-                          <div class="fractionation-lignin" style="width:7px; height:7px;"></div>
-                          <div class="fractionation-lignin" style="width:8px; height:8px;"></div>
-                          <div class="fractionation-lignin" style="width:9px; height:9px;"></div>
-                      </div>
-                       <p class="text-sm mt-2">(Conceptual Size: Small + Aggregates)</p>
-                  </div>
-             </div>
+            <p>Ligni inherent heterogeneity and complex structure make controlled processing difficult, yet its abundance and intrinsic properties make it a candidate for creating sustainable, high-value nanomaterials. This module focuses on transforming bulk lignin into Lignin Nanoparticles (LNPs) using diverse synthesis strategies and subsequently utilizing these particles as stabilizers for Pickering emulsions.</p>
+            <p>We will cover five key LNP synthesis approaches, ordered by conceptual development and increasing complexity where appropriate: <strong>acid precipitation</strong> (Method 1, including aqueous and non-aqueous variants), <strong>rapid precipitation/solvent shifting</strong> (Method 2), <strong>dialysis</strong> (Method 3), <strong>W/O microemulsion templating</strong> (Method 4), and <strong>aerosol flow reaction</strong> (Method 5). Detailed protocols are provided, alongside discussions on the critical role of process dynamics (nucleation, growth, aggregation), templating, drying kinetics, and importantly, the influence of the starting lignin's inherent heterogeneity and potential <strong>fractionation</strong>. We will then dive into the principles and practice of forming LNP-stabilized Pickering emulsions, exploring how LNP properties (size, wettability, charge) and processing conditions dictate emulsion characteristics for rationale design. </p>
         </section>
 
         <section id="principle" class="mb-16 p-8 rounded-lg shadow-lg section-bg-light">
@@ -401,7 +325,81 @@
                  </div>
              </div>
         </section>
-
+<section id="lignin-source" class="mb-16 p-8 rounded-lg shadow-lg section-bg-white">
+            <h2 >Foundation: Lignin Source Material - Heterogeneity & Fractionation</h2>
+            <p>Before discussing synthesis, we must acknowledge the starting point: technical lignins (Kraft, Organosolv, Alkali, etc.) are inherently heterogeneous in molecular weight (MW), polydispersity (PDI), and functional group content (-OH, -COOH, -OCH$_3$, residual S). This significantly impacts LNP formation pathways (nucleation, growth rates) and final particle properties (size, surface chemistry, stability, morphology). For instance, Kraft lignin (e.g., Indulin AT) tends to form irregularly shaped NPs, while Organosolv lignin (e.g., HPL) often yields more spheroidal particles via solvent shifting (<a href="https://doi.org/10.1021/acs.langmuir.6b01088" target="_blank" rel="noopener noreferrer">Richter et al. 2016</a>).</p>
+            <p><strong>Fractionation</strong> using organic solvents is key to obtaining more homogeneous lignin fractions prior to LNP synthesis. As demonstrated by <a href="https://doi.org/10.1039/d0gc03632c" target="_blank" rel="noopener noreferrer">Zwilling et al. (2021)</a>, sequential extraction of Kraft lignin (KL) with solvents of differing polarity yields distinct fractions:</p>
+            <ul>
+                <li><strong>Ethanol-Soluble (E-Frac):</strong> Lowest MW, highest phenolic -OH content, most hydrophilic.</li>
+                <li><strong>Acetone-Soluble (A-Frac):</strong> Intermediate MW/hydrophilicity.</li>
+                <li><strong>THF-Soluble (T-Frac):</strong> Highest MW, lowest phenolic -OH content, most hydrophobic.</li>
+            </ul>
+            <p>Using these fractions leads to different LNP characteristics via solvent shifting (Methods 2, 3), as reported by <a href="https://doi.org/10.1039/d0gc03632c" target="_blank" rel="noopener noreferrer">Venditti et al. (2021)</a>:</p>
+            <ul>
+                <li><strong>E-Frac:</strong> Higher hydrophilicity leads to larger DLS sizes. TEM reveals "soft" (less dense, potentially swollen/hydrated), metastable particles that readily deform and fuse, especially at higher lignin concentrations.</li>
+                <li><strong>A-Frac:</strong> Often represents a good balance, yielding well-defined, relatively stable spherical particles with good homogeneity.</li>
+                <li><strong>T-Frac:</strong> Higher hydrophobicity drives faster nucleation, forming smaller primary particles (seen in TEM). However, these smaller particles possess high surface energy, leading to significant aggregation and fusion, resulting in larger apparent sizes in DLS, similar to A-LPs.</li>
+            </ul>
+             <p>Characterizing your starting lignin (whole or fractionated) via GPC (MW, PDI) and NMR/FTIR (functional groups) is crucial for understanding and predicting LNP formation.</p>
+             <div class="critical-note"><strong>Applying Fractionation:</strong> In principle, fractionation can be applied before any method starting with dissolved lignin (Methods 2, 3, 4, 5) to potentially improve control over LNP properties. Method 1 typically uses whole alkali-soluble lignin.</div>
+            <h4>Fractionation Protocol Example (Venditti et al. 2021)</h4>
+             <ol class="list-decimal list-inside pl-6 space-y-2 text-base">
+                  <li>~1 g dry KL + 40 mL anhydrous ethanol. Vortex. Centrifuge. Decant supernatant (E-Frac soln).</li>
+                  <li>To pellet, add 40 mL anhydrous acetone. Vortex. Centrifuge. Decant supernatant (A-Frac soln).</li>
+                  <li>To pellet, add 40 mL anhydrous THF. Vortex. Centrifuge. Decant supernatant (T-Frac soln). Discard pellet.</li>
+                  <li>Evaporate solvent from each fraction soln. Dry thoroughly before use.</li>
+             </ol>
+             <h4 class="!mt-8 !mb-4 !border-b-0">Conceptual Visualization: Solvent Fractionation & LNP Formation</h4>
+             <div class="visualization-container fractionation-vis">
+                  <div class="fractionation-step">
+                      <div class="vis-label">Ethanol Extraction</div>
+                      <div class="fractionation-solvent" style="background-color: var(--ethanol-color); color: #065f46;">Ethanol</div>
+                      <p class="text-sm">Extracts Low MW / Hydrophilic (E-Frac)</p>
+                      <div class="vis-label mt-4">Resulting E-LPs</div>
+                      <div class="fractionation-result" title="Larger DLS size; 'Soft', metastable, fused particles (TEM)">
+                          <div class="fractionation-lignin" style="width:15px; height:15px; opacity:0.7;"></div>
+                          <div class="fractionation-lignin" style="width:18px; height:18px; opacity:0.6;"></div>
+                          <div class="fractionation-lignin" style="width:16px; height:16px; opacity:0.7;"></div>
+                          <div class="fractionation-lignin" style="width:17px; height:17px; opacity:0.5;"></div>
+                          <div class="fractionation-lignin" style="width:15px; height:15px; opacity:0.6;"></div>
+                      </div>
+                      <p class="text-sm mt-2">(Conceptual Size: Large, Fused)</p>
+                  </div>
+                  <div class="vis-arrow">➔</div>
+                  <div class="fractionation-step">
+                      <div class="vis-label">Acetone Extraction</div>
+                      <div class="fractionation-solvent" style="background-color: var(--acetone-color); color: #9f1239;">Acetone</div>
+                      <p class="text-sm">Extracts Medium MW / Intermediate (A-Frac)</p>
+                      <div class="vis-label mt-4">Resulting A-LPs</div>
+                      <div class="fractionation-result" title="Well-defined, stable spherical particles (TEM)">
+                          <div class="fractionation-lignin" style="width:10px; height:10px;"></div>
+                          <div class="fractionation-lignin" style="width:12px; height:12px;"></div>
+                          <div class="fractionation-lignin" style="width:11px; height:11px;"></div>
+                          <div class="fractionation-lignin" style="width:10px; height:10px;"></div>
+                          <div class="fractionation-lignin" style="width:12px; height:12px;"></div>
+                          <div class="fractionation-lignin" style="width:11px; height:11px;"></div>
+                      </div>
+                       <p class="text-sm mt-2">(Conceptual Size: Small/Medium)</p>
+                  </div>
+                   <div class="vis-arrow">➔</div>
+                  <div class="fractionation-step">
+                      <div class="vis-label">THF Extraction</div>
+                      <div class="fractionation-solvent" style="background-color: var(--thf-color); color: #1e40af;">THF</div>
+                       <p class="text-sm">Extracts High MW / Hydrophobic (T-Frac)</p>
+                      <div class="vis-label mt-4">Resulting T-LPs</div>
+                      <div class="fractionation-result" title="Small primary particles (TEM), but aggregated/fused (larger DLS size)">
+                          <div class="fractionation-lignin" style="width:8px; height:8px;"></div>
+                          <div class="fractionation-lignin" style="width:7px; height:7px;"></div>
+                          <div class="fractionation-lignin" style="width:9px; height:9px;"></div>
+                          <div class="fractionation-lignin" style="width:8px; height:8px;"></div>
+                          <div class="fractionation-lignin" style="width:7px; height:7px;"></div>
+                          <div class="fractionation-lignin" style="width:8px; height:8px;"></div>
+                          <div class="fractionation-lignin" style="width:9px; height:9px;"></div>
+                      </div>
+                       <p class="text-sm mt-2">(Conceptual Size: Small + Aggregates)</p>
+                  </div>
+             </div>
+        </section>
         <section id="pickering-emulsions" class="mb-16 p-8 rounded-lg shadow-lg section-bg-white">
             <h2 >Application Focus: LNP-Stabilized Pickering Emulsions</h2>
             <p>A major application harnessing the colloidal nature of LNPs is the stabilization of Pickering emulsions. Here, LNPs adsorb irreversibly at the oil-water interface, creating a robust steric barrier that prevents droplet coalescence. This section draws heavily on the comprehensive review by <a href="https://doi.org/10.1016/j.cis.2024.103247" target="_blank" rel="noopener noreferrer">Marquez et al. (2024)</a> and examples using aerosol-generated particles by <a href="https://doi.org/10.1021/acsami.6b07900" target="_blank" rel="noopener noreferrer">Ago et al. (2016)</a>.</p>
@@ -524,8 +522,7 @@
                  <li>Lievonen, M. et al. A simple process for lignin nanoparticle preparation. <i>Green Chem.</i> <b>18</b>, 1416–1422 (2016). <a href="https://doi.org/10.1039/C5GC01431E" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800">[DOI]</a></li>
                  <li>Ago, M. et al. High-Throughput Synthesis of Lignin Particles (∼30 nm to ∼2 μm) via Aerosol Flow Reactor: Size Fractionation and Utilization in Pickering Emulsions. <i>ACS Appl. Mater. Interfaces</i> <b>8</b>, 23302–23310 (2016). <a href="https://doi.org/10.1021/acsami.6b07900" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800">[DOI]</a></li>
                  <li>Richter, A. P. et al. Synthesis and Characterization of Biodegradable Lignin Nanoparticles with Tunable Surface Properties. <i>Langmuir</i> <b>32</b>, 6468–6477 (2016). <a href="https://doi.org/10.1021/acs.langmuir.6b01088" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800">[DOI]</a></li>
-                 <li>Venditti, R. A. et al. Understanding lignin micro- and nanoparticle nucleation and growth in aqueous suspensions by solvent fractionation. <i>Green Chem.</i> <b>23</b>, 1001–1012 (2021). <a href="https://doi.org/10.1039/d0gc03632c" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800">[DOI]</a></li>
-                 <li>Marquez, R. et al. Lignin Nanoparticles as Stabilizers in Pickering Emulsions. <i>Adv. Colloid Interface Sci.</i> <b>327</b>, 103247 (2024). <a href="https://doi.org/10.1016/j.cis.2024.103247" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800">[DOI]</a></li>
+                 <li>Zwilling, R. A. et al. Understanding lignin micro- and nanoparticle nucleation and growth in aqueous suspensions by solvent fractionation. <i>Green Chem.</i> <b>23</b>, 1001–1012 (2021). <a href="https://doi.org/10.1039/d0gc03632c" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800">[DOI]</a></li>
                  <li>Österberg, M., Sipponen, M. H., Mattos, B. D. & Rojas, O. J. Spherical lignin particles: a review on their sustainability and applications. <i>Green Chem.</i> <b>22</b>, 2712–2733 (2020). <a href="https://doi.org/10.1039/D0GC00096E" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800">[DOI]</a></li>
                  <li>Binks, B. P. Particles as surfactants – similarities and differences. <i>Curr. Opin. Colloid Interface Sci.</i> <b>7</b>, 21–41 (2002). <a href="https://doi.org/10.1016/S1359-0294(02)00008-0" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800">[DOI]</a></li>
                  <li>Aveyard, R., Binks, B. P. & Clint, J. H. Emulsions stabilised solely by colloidal particles. <i>Adv. Colloid Interface Sci.</i> <b>100–102</b>, 503–546 (2003). <a href="https://doi.org/10.1016/S0001-8686(02)00069-6" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800">[DOI]</a></li>
@@ -535,14 +532,13 @@
      <footer class="mt-16 pt-10 pb-8 border-t border-gray-300 text-sm text-gray-600">
             <p class="footer-attribution">PhD Comprehensive Guide | Sustainable Materials Research</p>
             <p class="footer-attribution">
-                Key References:
+                Some Key References:
                 <a href="https://doi.org/10.1002/cphc.201200537" target="_blank" rel="noopener noreferrer" class="font-medium">Frangville '12</a> |
                 <a href="https://doi.org/10.1039/c4sm02851a" target="_blank" rel="noopener noreferrer" class="font-medium">Nypelö '15</a> |
                 <a href="https://doi.org/10.1039/C5GC01431E" target="_blank" rel="noopener noreferrer" class="font-medium">Lievonen '16</a> |
                 <a href="https://doi.org/10.1021/acsami.6b07900" target="_blank" rel="noopener noreferrer" class="font-medium">Ago '16</a> |
                 <a href="https://doi.org/10.1021/acs.langmuir.6b01088" target="_blank" rel="noopener noreferrer" class="font-medium">Richter '16</a> |
-                <a href="https://doi.org/10.1039/d0gc03632c" target="_blank" rel="noopener noreferrer" class="font-medium">Venditti '21</a> |
-                <a href="https://doi.org/10.1016/j.cis.2024.103247" target="_blank" rel="noopener noreferrer" class="font-medium">Marquez '24</a>
+                <a href="https://doi.org/10.1039/d0gc03632c" target="_blank" rel="noopener noreferrer" class="font-medium">Zwilling '21</a> |
             </p>
      </footer>
 
