@@ -239,6 +239,26 @@
                   <div class="critical-note"><strong>Variations & Notes:</strong>
                     <ul><li>Slower diffusion allows more controlled growth.</li><li>Final particle size influenced by initial concentration, solvent choice, temperature, and lignin source/fraction (<a href="https://doi.org/10.1039/d0gc03632c" target="_blank" rel="noopener noreferrer">Venditti et al. 2021</a>).</li><li>Frangville et al. (2012, Method A) used EG solvent with slow HCl addition, then dialysis.</li><li>Ensure solvent miscibility with water. Handle solvents safely. Slow, low throughput. Concentration effects ($C_0$) may still apply.</li></ul></div>
             </section>
+            <section id="interactive-sims-lnp" class="mb-16 p-8 rounded-lg shadow-lg section-bg-light dynamic-content">
+            <h2 >Interactive Conceptual Simulations: LNP Formation & Stability</h2>
+             <div class="interactive-block">
+                 <h3 class="text-center !mt-0 !border-b-0">Simulation 1: LNP Formation Kinetics (Conceptual)</h3>
+                 <p class="text-center text-sm text-gray-600 mb-4">Qualitatively compare slow diffusion (Method 3) vs. rapid mixing (Method 2 variants).</p>
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 mb-6">
+                     <div><div class="slider-label"><label for="sim-conc-slider">Initial Lignin Conc. (Influences Nucleation/Growth):</label><span id="sim-conc-value">5.0</span></div><input type="range" id="sim-conc-slider" min="1" max="20" value="5.0" step="0.5"></div>
+                     <div><div class="slider-label"><label for="sim-rate-slider">Mixing Intensity / Exchange Rate:</label><span id="sim-rate-value">5</span></div><input type="range" id="sim-rate-slider" min="1" max="10" value="5" step="1"></div>
+                 </div>
+                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8">
+                     <div class="simulation-container" id="sim-dialysis"><div class="simulation-title">Dialysis (Slow Exchange)</div><div class="simulation-visual-area" style="background-color: var(--accent-blue-light);"><div class="dialysis-sim-bag"><div class="particle-area" id="dialysis-particles"></div></div></div><div class="sim-button-container"><button id="run-dialysis-btn">Run Dialysis Sim</button></div></div>
+                     <div class="simulation-container" id="sim-lignin-to-water"><div class="simulation-title">Rapid Precip. (L→W, Fast Mixing)</div><div class="simulation-visual-area" id="sim-lignin-to-water-visual-area"><div class="particle-area" id="lignin-to-water-particles"></div></div><div class="sim-button-container"><button id="run-lignin-to-water-btn">Run L→W Sim</button></div></div>
+                     <div class="simulation-container" id="sim-water-to-lignin"><div class="simulation-title">Rapid Precip. (W→L, Fast Mixing)</div><div class="simulation-visual-area" id="sim-water-to-lignin-visual-area" style="background-color: rgba(251, 191, 36, 0.1);"><div class="particle-area" id="water-to-lignin-particles"></div></div><div class="sim-button-container"><button id="run-water-to-lignin-btn">Run W→L Sim</button></div></div>
+                 </div>
+                  <div id="sim-error" class="error-text" style="min-height: 1.5rem;"></div>
+                  <div class="caveat-note">
+                    <strong>Simulation Caveat:</strong> This simulation is purely conceptual and qualitative. It illustrates potential differences in particle formation speed and aggregation tendency based on simplified 'concentration' and 'mixing rate' inputs. It does **not** use a physics-based model for nucleation, growth, or aggregation kinetics, nor does it capture the complex concentration-dependent aggregation/fusion effects ($C_0$ phenomenon) described by <a href="https://doi.org/10.1039/d0gc03632c" target="_blank" rel="noopener noreferrer">Venditti et al. (2021)</a> or the specific growth kinetics seen in EG (<a href="https://doi.org/10.1021/acs.langmuir.6b01088" target="_blank" rel="noopener noreferrer">Richter et al. 2016</a>). Use it to visualize the *idea* that slower processes (dialysis) might lead to more gradual formation, while rapid mixing can lead to faster formation but potentially more aggregation, influenced by concentration.
+                 </div>
+             </div>
+        </section>
             <section id="microemulsion-proc" class="section-bg-white p-8 rounded-lg shadow-lg mb-8">
                 <h3 >Method 4: Microemulsion Templating</h3>
                 <p>Using thermodynamically stable Water-in-Oil (W/O) microemulsions as nanoreactors/templates, based on <a href="https://doi.org/10.1039/c4sm02851a" target="_blank" rel="noopener noreferrer">Nypelö, Carrillo, and Rojas (2015)</a>.</p>
@@ -248,7 +268,7 @@
                  <ul class="list-disc list-inside pl-4 mb-6 text-sm space-y-2"><li>Standard lab equipment + Thermostated bath, Centrifuge, Homogenizer (optional).</li></ul>
                 <h4>4.3 Procedure</h4>
                   <ol class="list-decimal list-inside pl-6 space-y-4"><li><strong>Surfactant/Oil Phase:</strong> Prepare surfactant/co-surfactant mix. Dissolve in oil phase.</li><li><strong>Aqueous Lignin Phase:</strong> Dissolve lignin in aqueous base (e.g., 10-20 wt%). Add cross-linker precursor if applicable.</li><li><strong>Form W/O Microemulsion:</strong> Gently titrate aqueous phase into the stirred oil/surfactant phase until clear and stable.</li><li><strong>Cross-linking (if used):</strong> Initiate cross-linking reaction (e.g., heat).</li><li><strong>Particle Isolation/Washing:</strong> Break microemulsion (e.g., add anti-solvent). Centrifuge to collect particles. Wash repeatedly (3-5x) via centrifugation/resuspension to remove oil/surfactant residuals. CRITICAL step.</li><li><strong>Collection:</strong> Collect final aqueous dispersion of LNPs. Store 4°C.</li><li><strong>Characterization:</strong> DLS/Zeta, SEM/TEM (confirm templated morphology). FTIR (confirm cross-linking, check residuals).</li></ol>
-                  <div class="critical-note"><strong>Microemulsion Nuances:</strong> Requires careful formulation. Cross-linking adds complexity. Size templated. **Thorough washing essential** to remove residuals. Handle chemicals safely.</li>
+                  <div class="critical-note"><strong>Microemulsion characteristics:</strong> Requires careful formulation. Cross-linking adds complexity. Size templated. **Thorough washing essential** to remove residuals. Handle chemicals safely.</li>
                    <h4 class="!mt-8 !mb-4 !border-b-0">Conceptual Visualization: Microemulsion Templating</h4>
                    <div class="visualization-container">
                        <div class="vis-stage"><div class="vis-label">1. W/O Microemulsion</div><div class="microemulsion-vis" title="Oil phase (light gray) containing aqueous droplets (yellow) with dissolved lignin (L)"><div class="me-droplet">L</div><div class="me-droplet">L</div><div class="me-droplet">L</div><div class="me-droplet">L</div><div class="me-droplet">L</div><div class="me-droplet">L</div><div class="me-droplet">L</div><div class="me-droplet">L</div><div class="me-droplet">L</div></div></div>
@@ -279,26 +299,7 @@
             </section>
         </section>
 
-        <section id="interactive-sims-lnp" class="mb-16 p-8 rounded-lg shadow-lg section-bg-light dynamic-content">
-            <h2 >Interactive Conceptual Simulations: LNP Formation & Stability</h2>
-             <div class="interactive-block">
-                 <h3 class="text-center !mt-0 !border-b-0">Simulation 1: LNP Formation Kinetics (Conceptual)</h3>
-                 <p class="text-center text-sm text-gray-600 mb-4">Qualitatively compare slow diffusion (Method 3) vs. rapid mixing (Method 2 variants).</p>
-                 <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 mb-6">
-                     <div><div class="slider-label"><label for="sim-conc-slider">Initial Lignin Conc. (Influences Nucleation/Growth):</label><span id="sim-conc-value">5.0</span></div><input type="range" id="sim-conc-slider" min="1" max="20" value="5.0" step="0.5"></div>
-                     <div><div class="slider-label"><label for="sim-rate-slider">Mixing Intensity / Exchange Rate:</label><span id="sim-rate-value">5</span></div><input type="range" id="sim-rate-slider" min="1" max="10" value="5" step="1"></div>
-                 </div>
-                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8">
-                     <div class="simulation-container" id="sim-dialysis"><div class="simulation-title">Dialysis (Slow Exchange)</div><div class="simulation-visual-area" style="background-color: var(--accent-blue-light);"><div class="dialysis-sim-bag"><div class="particle-area" id="dialysis-particles"></div></div></div><div class="sim-button-container"><button id="run-dialysis-btn">Run Dialysis Sim</button></div></div>
-                     <div class="simulation-container" id="sim-lignin-to-water"><div class="simulation-title">Rapid Precip. (L→W, Fast Mixing)</div><div class="simulation-visual-area" id="sim-lignin-to-water-visual-area"><div class="particle-area" id="lignin-to-water-particles"></div></div><div class="sim-button-container"><button id="run-lignin-to-water-btn">Run L→W Sim</button></div></div>
-                     <div class="simulation-container" id="sim-water-to-lignin"><div class="simulation-title">Rapid Precip. (W→L, Fast Mixing)</div><div class="simulation-visual-area" id="sim-water-to-lignin-visual-area" style="background-color: rgba(251, 191, 36, 0.1);"><div class="particle-area" id="water-to-lignin-particles"></div></div><div class="sim-button-container"><button id="run-water-to-lignin-btn">Run W→L Sim</button></div></div>
-                 </div>
-                  <div id="sim-error" class="error-text" style="min-height: 1.5rem;"></div>
-                  <div class="caveat-note">
-                    <strong>Simulation Caveat:</strong> This simulation is purely **conceptual and qualitative**. It illustrates potential differences in particle formation speed and aggregation tendency based on simplified 'concentration' and 'mixing rate' inputs. It does **not** use a physics-based model for nucleation, growth, or aggregation kinetics, nor does it capture the complex concentration-dependent aggregation/fusion effects ($C_0$ phenomenon) described by <a href="https://doi.org/10.1039/d0gc03632c" target="_blank" rel="noopener noreferrer">Venditti et al. (2021)</a> or the specific growth kinetics seen in EG (<a href="https://doi.org/10.1021/acs.langmuir.6b01088" target="_blank" rel="noopener noreferrer">Richter et al. 2016</a>). Use it to visualize the *idea* that slower processes (dialysis) might lead to more gradual formation, while rapid mixing can lead to faster formation but potentially more aggregation, influenced by concentration.
-                 </div>
-             </div>
-        </section>
+        
 <section id="lignin-source" class="mb-16 p-8 rounded-lg shadow-lg section-bg-white">
             <h2 >Foundation: Lignin Source Material - Heterogeneity & Fractionation</h2>
             <p>Before discussing synthesis, we must acknowledge the starting point: technical lignins (Kraft, Organosolv, Alkali, etc.) are inherently heterogeneous in molecular weight (MW), polydispersity (PDI), and functional group content (-OH, -COOH, -OCH$_3$, residual S). This significantly impacts LNP formation pathways (nucleation, growth rates) and final particle properties (size, surface chemistry, stability, morphology). For instance, Kraft lignin (e.g., Indulin AT) tends to form irregularly shaped NPs, while Organosolv lignin (e.g., HPL) often yields more spheroidal particles via solvent shifting (<a href="https://doi.org/10.1021/acs.langmuir.6b01088" target="_blank" rel="noopener noreferrer">Richter et al. 2016</a>).</p>
