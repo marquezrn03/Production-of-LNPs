@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Protocol & Simulation: LNP Synthesis via Solvent Exchange, Templating & Aerosol Methods (Refs: Frangville 2012, Lievonen 2015, Nypelö 2015, Ago 2016, Richter 2016, Venditti 2021)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #a16207; --primary-light: #facc15; --primary-lighter: #fef3c7; --primary-lightest: #fffbeb; --primary-dark: #854d0e; --primary-darker: #713f12;
+            --secondary-color: #d97706; --secondary-light: #fbbf24; --secondary-lighter: #fef9c3; --secondary-lightest: #fffbeb;
+            --text-color: #374151; --text-dark: #1f2937; --text-light: #6b7280;
+            --bg-light: #fdfbf7; --bg-white: #ffffff;
+            --border-color: #eab308; --border-light: #fde68a; --border-medium: #fcd34d;
+            --accent-blue: #3b82f6; --accent-blue-light: #bfdbfe;
+            --oil-color-light: #f3f4f6; --oil-color: #e5e7eb;
+        }
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; background-color: var(--bg-light); color: var(--text-color); }
+        label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--text-color); font-size: 0.9rem; }
+        input[type="range"] { width: 100%; cursor: pointer; accent-color: var(--secondary-color); height: 8px; background-color: var(--primary-lighter); border-radius: 9999px; appearance: none; -webkit-appearance: none; margin-top: 0.25rem; }
+        input[type="range"]::-webkit-slider-thumb { appearance: none; -webkit-appearance: none; width: 18px; height: 18px; background: var(--secondary-color); border-radius: 50%; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.15); border: 1px solid var(--primary-dark); }
+        input[type="range"]::-moz-range-thumb { width: 18px; height: 18px; background: var(--secondary-color); border-radius: 50%; cursor: pointer; border: 1px solid var(--primary-dark); box-shadow: 0 2px 4px rgba(0,0,0,0.15); }
+        input[type="number"], select { padding: 0.6rem; border: 1px solid #D1D5DB; border-radius: 0.375rem; width: 100%; background-color: var(--bg-white); font-size: 0.95rem; }
+        button { background-color: var(--secondary-light); color: var(--primary-darker); padding: 0.7rem 1.4rem; border-radius: 0.375rem; font-weight: 600; transition: all 0.2s ease-in-out; display: inline-block; text-align: center; border: 1px solid var(--secondary-color); cursor: pointer; font-size: 0.95rem; }
+        button:hover { background-color: var(--secondary-color); color: var(--secondary-lightest); transform: translateY(-2px); box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1); }
+        button:disabled { background-color: #d1d5db; color: #9ca3af; border-color: #9ca3af; cursor: not-allowed; transform: none; box-shadow: none; }
+        h1 { color: var(--text-dark); font-size: 2.1rem; line-height: 2.6rem; font-weight: 700;}
+        h2 { color: var(--primary-darker); font-size: 1.85rem; line-height: 2.3rem; font-weight: 700; border-bottom: 3px solid var(--border-medium); padding-bottom: 0.7rem; margin-top: 3.5rem; margin-bottom: 2rem; }
+        h3 { color: var(--primary-dark); font-size: 1.45rem; line-height: 1.95rem; font-weight: 600; margin-top: 2.8rem; margin-bottom: 1.4rem; border-bottom: 1px solid var(--primary-lighter); padding-bottom: 0.4rem; }
+        h4 { color: var(--primary-darker); font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; }
+        p, li, td, th { color: var(--text-color); line-height: 1.85; margin-bottom: 1.3rem; font-size: 1.05rem; }
+        li { margin-bottom: 0.5rem; }
+        strong { color: var(--text-dark); font-weight: 600; }
+        code { background-color: var(--primary-lighter); color: var(--primary-darker); padding: 0.2em 0.5em; border-radius: 0.25rem; font-family: 'Courier New', Courier, monospace; font-size: 0.95em; }
+        .section-bg-light { background-color: var(--secondary-lightest); padding: 2.5rem 2rem; border-radius: 0.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.04); }
+        .section-bg-white { background-color: var(--bg-white); padding: 2.5rem 2rem; border-radius: 0.5rem; box-shadow: 0 3px 7px rgba(0,0,0,0.06); }
+        .interactive-block { margin-top: 2.5rem; margin-bottom: 2.5rem; padding: 2.5rem; border: 1px solid var(--border-medium); border-radius: 0.75rem; background-color: var(--bg-white); box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08); }
+        .output-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; margin-top: 1.8rem; }
+        .output-item { background-color: var(--primary-lighter); border: 1px solid var(--border-light); border-radius: 0.5rem; padding: 1.2rem; text-align: center; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .output-item:hover { transform: scale(1.03); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .output-label { display: block; font-size: 0.9rem; color: var(--primary-darker); margin-bottom: 0.4rem; font-weight: 500; }
+        .output-value { font-size: 1.35rem; font-weight: 600; color: var(--primary-dark); word-wrap: break-word; }
+        .output-unit { font-size: 0.85rem; color: var(--secondary-color); margin-left: 0.3rem;}
+        .error-text { color: #ef4444; font-weight: bold; margin-top: 1.2rem; text-align: center; font-size: 0.95rem; }
+        .math-block { margin: 2rem 0; padding: 1.5rem; background-color: var(--secondary-lightest); border-left: 6px solid var(--secondary-light); font-size: 1.15rem; overflow-x: auto; box-shadow: inset 3px 3px 6px rgba(0,0,0,0.05); border-radius: 0 0.5rem 0.5rem 0; }
+        .footer-attribution { margin-top: 2.5rem; font-size: 0.9rem; line-height: 1.3rem; color: var(--text-light); text-align: center; }
+        .slider-container div:not(.output-grid):not(.simulation-container):not(.visualization-container) { margin-bottom: 1.8rem;}
+        .slider-label { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;}
+        .slider-label span:last-child { font-size: 1rem; font-weight: 500; color: var(--primary-dark); min-width: 85px; text-align: right; background-color: var(--primary-lighter); padding: 0.2rem 0.5rem; border-radius: 0.25rem; }
+        .critical-note { background-color: #fffbeb; border-left: 5px solid #f59e0b; padding: 1.2rem; margin: 2rem 0; border-radius: 0.375rem; color: #b45309; font-size: 1rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .critical-note strong { color: #92400e; }
+        .safety-note { background-color: #fee2e2; border-left: 5px solid #ef4444; padding: 1.2rem; margin: 2rem 0; border-radius: 0.375rem; color: #b91c1c; font-size: 1rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .safety-note strong { color: #991b1b; }
+        a { color: var(--secondary-color); text-decoration: none; transition: color 0.2s ease;}
+        a:hover { color: var(--primary-dark); text-decoration: underline;}
+        .simulation-container { border: 1px solid var(--border-medium); border-radius: 0.5rem; padding: 1.5rem; margin-bottom: 1.5rem; background-color: #f9fafb; position: relative; overflow: hidden; min-height: 280px; display: flex; flex-direction: column; }
+        .simulation-title { font-weight: 600; color: var(--primary-darker); margin-bottom: 1rem; text-align: center; font-size: 1.1rem; flex-shrink: 0; }
+        .simulation-visual-area { flex-grow: 1; position: relative; min-height: 150px; background-color: var(--accent-blue-light); border-radius: 0.25rem; border: 1px solid var(--accent-blue-light); }
+        .dialysis-sim-bag { width: 60px; height: 90px; border: 2px dashed #6b7280; border-radius: 10px; background-color: rgba(251, 191, 36, 0.15); position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; justify-content: center; align-items: center; }
+        .precipitation-sim-beaker { width: 100px; height: 120px; border: 2px solid #6b7280; border-bottom-width: 3px; border-radius: 0 0 10px 10px; background-color: rgba(251, 191, 36, 0.1); position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); }
+        .precipitation-sim-water { width: 100px; height: 120px; border: 2px solid #6b7280; border-bottom-width: 3px; border-radius: 0 0 10px 10px; background-color: rgba(59, 130, 246, 0.0); position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); }
+        .particle-area { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+        .sim-particle { position: absolute; background-color: var(--primary-color); border-radius: 50%; transition: transform 0.5s ease-out, opacity 0.5s ease-out; opacity: 0; transform: scale(0) translate(-50%, -50%); transform-origin: center center; }
+        .sim-water-drop { position: absolute; background-color: var(--accent-blue); border-radius: 50%; width: 6px; height: 9px; top: 5%; left: 50%; transform: translateX(-50%); animation: fall 0.8s linear forwards; opacity: 0; z-index: 10; }
+        .sim-lignin-stream { position: absolute; background-color: var(--secondary-light); width: 4px; top: 5%; left: 50%; transform: translateX(-50%); animation: stream 0.8s linear forwards; opacity: 0; border-radius: 2px; z-index: 10; }
+        .sim-aggregate { border: 1px dotted var(--primary-darker); background-color: var(--secondary-color) !important; }
+        @keyframes fall { 0% { top: 5%; opacity: 1; height: 9px; } 90% { top: 70%; opacity: 1; height: 6px; } 100% { top: 70%; opacity: 0; height: 6px; } }
+        @keyframes stream { 0% { height: 0; top: 5%; opacity: 1; } 80% { height: 65%; top: 5%; opacity: 1;} 100% { height: 65%; top: 5%; opacity: 0; } }
+        .sim-controls { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem; flex-shrink: 0; }
+        .sim-button-container { text-align: center; margin-top: auto; padding-top: 1rem; flex-shrink: 0; }
+        .visualization-container { border: 1px solid var(--border-medium); border-radius: 0.5rem; padding: 1.5rem; margin-top: 2rem; background-color: var(--bg-white); display: flex; align-items: center; justify-content: space-around; gap: 1rem; flex-wrap: wrap; }
+        .vis-stage { text-align: center; min-width: 120px; }
+        .vis-label { font-weight: 600; color: var(--primary-darker); margin-bottom: 1rem; font-size: 1.1rem; }
+        .microemulsion-vis { width: 120px; height: 120px; background-color: var(--oil-color-light); border: 1px dashed var(--oil-color); border-radius: 0.5rem; position: relative; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; padding: 8px; gap: 6px; }
+        .me-droplet { width: 12px; height: 12px; background-color: var(--secondary-lighter); border: 1px solid var(--secondary-color); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 0.5rem; color: var(--primary-darker); font-weight: bold; }
+        .solid-particles-vis { width: 120px; height: 120px; background-color: var(--accent-blue-light); border: 1px solid var(--accent-blue); border-radius: 0.5rem; position: relative; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; padding: 8px; gap: 6px; }
+        .solid-particle { width: 12px; height: 12px; background-color: var(--primary-color); border: 1px solid var(--primary-darker); border-radius: 50%; }
+        .aerosol-vis { width: 120px; height: 120px; background-color: #f3f4f6; border: 1px solid #d1d5db; border-radius: 0.5rem; position: relative; display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 8px; }
+        .aerosol-nozzle { width: 10px; height: 15px; background-color: #9ca3af; border-radius: 2px 2px 0 0; margin-bottom: 5px; }
+        .aerosol-droplet { width: 5px; height: 5px; background-color: var(--secondary-lighter); border: 1px solid var(--secondary-color); border-radius: 50%; margin: 1px; position: absolute; animation: spray-dry 1s ease-out forwards; }
+        @keyframes spray-dry { 0% { opacity: 1; transform: translateY(0) scale(1); background-color: var(--secondary-lighter); } 50% { opacity: 0.8; transform: translateY(40px) scale(0.7); background-color: var(--primary-lighter); } 100% { opacity: 0.6; transform: translateY(80px) scale(0.5); background-color: var(--primary-color); } }
+        .vis-arrow { font-size: 2rem; color: var(--text-light); align-self: center; }
+        table { width: 100%; border-collapse: collapse; margin-top: 2rem; margin-bottom: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        th, td { border: 1px solid var(--border-light); padding: 0.8rem 1rem; text-align: left; vertical-align: top; }
+        th { background-color: var(--primary-lighter); color: var(--primary-darker); font-weight: 600; font-size: 1rem; }
+        td { background-color: var(--bg-white); font-size: 0.95rem; }
+        tbody tr:nth-child(odd) td { background-color: #fefcf9; }
+        td ul { padding-left: 1.2rem; margin-bottom: 0; }
+        td li { font-size: 0.95rem; margin-bottom: 0.3rem; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 antialiased">
+    <header class="bg-gradient-to-r from-yellow-600 via-amber-600 to-yellow-700 text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-8 py-6">
+             <h1 class="text-3xl md:text-4xl font-bold">Comprehensive Protocol & Simulation: Lignin Nanoparticle Synthesis</h1>
+            <p class="text-xl font-semibold mt-2">Solvent Exchange, Templating & Aerosol Methods</p>
+        </div>
+    </header>
+    <main class="container mx-auto px-8 py-12">
+        <section id="intro" class="mb-16 p-8 rounded-lg shadow-xl section-bg-white">
+            <h2 >Introduction: From Bulk Polymer to Functional Nanomaterial</h2>
+            <p>Lignin, nature's intricate aromatic polymer, presents both a challenge and a profound opportunity. Its inherent heterogeneity and complex structure make controlled processing difficult, yet its abundance and intrinsic properties make it an ideal candidate for creating sustainable, high-value nanomaterials. This guide focuses on transforming bulk lignin into Lignin Nanoparticles (LNPs) using diverse synthesis strategies.</p>
+            <p>We will cover five key approaches: <strong>dialysis</strong> (Method 1), <strong>rapid precipitation (L→W)</strong> (Method 2), <strong>acid precipitation from high pH</strong> (Method 3), <strong>W/O microemulsion templating</strong> (Method 4), and <strong>aerosol flow reaction</strong> (Method 5). Detailed protocols are provided, alongside discussions on the critical role of process dynamics, templating, drying kinetics, and importantly, the influence of the starting lignin's inherent heterogeneity and potential fractionation. Understanding these differences is paramount for rational design and optimization.</p>
+        </section>
+        <section id="lignin-source" class="mb-16 p-8 rounded-lg shadow-lg section-bg-white">
+            <h2 >Lignin Source Material: Heterogeneity & Fractionation</h2>
+            <p>Technical lignins (Kraft, Organosolv, etc.) are inherently heterogeneous in terms of molecular weight (MW), polydispersity (PDI), and functional group content (-OH, -COOH, -OCH$_3$, residual S). This heterogeneity significantly impacts LNP formation and properties.</p>
+            <p><strong>Fractionation</strong> using organic solvents is a key strategy to obtain more homogeneous lignin fractions prior to LNP synthesis. As demonstrated by <a href="https://doi.org/10.1039/d0gc03632c" target="_blank" rel="noopener noreferrer">Venditti et al. (2021)</a>, sequential extraction of Kraft lignin (KL) with solvents of increasing polarity yields distinct fractions:</p>
+            <ul>
+                <li><strong>Ethanol-Soluble Fraction (E-Frac):</strong> Lowest MW, highest hydroxyl content (most hydrophilic).</li>
+                <li><strong>Acetone-Soluble Fraction (A-Frac):</strong> Intermediate MW and hydrophilicity.</li>
+                <li><strong>THF-Soluble Fraction (T-Frac):</strong> Highest MW, lowest hydroxyl content (most hydrophobic).</li>
+            </ul>
+            <p>Using these fractions instead of the whole KL leads to different LNP characteristics (size, morphology, stability) via solvent shifting (Methods 1, 2, 3). E-Frac tends to form larger, softer, aggregated particles; T-Frac forms smaller initial particles prone to aggregation; A-Frac often yields well-defined, stable particles. Understanding the properties of your starting lignin (whole or fractionated) via GPC and NMR (e.g., ${}^{31}$P NMR for OH groups) is crucial for predictable LNP synthesis.</p>
+            <h4>Fractionation Protocol Example (Venditti et al. 2021)</h4>
+             <ol class="list-decimal list-inside pl-6 space-y-2 text-base">
+                 <li>Add ~1 g dry KL to 40 mL anhydrous ethanol in a centrifuge tube. Vortex vigorously (e.g., 60s @ 3000 RPM).</li>
+                 <li>Centrifuge (e.g., 5 min @ 4000 RPM). Decant supernatant (this is the E-Frac solution).</li>
+                 <li>To the ethanol-insoluble pellet, add 40 mL anhydrous acetone. Vortex and centrifuge as above. Decant supernatant (A-Frac solution).</li>
+                 <li>To the acetone-insoluble pellet, add 40 mL anhydrous THF. Vortex and centrifuge. Decant supernatant (T-Frac solution). Discard final insoluble pellet.</li>
+                 <li>Evaporate solvent from each fraction (e.g., rotary evaporator) and dry thoroughly (vacuum oven) before characterization or redissolving for LNP synthesis.</li>
+             </ol>
+        </section>
+        <section id="principle" class="mb-16 p-8 rounded-lg shadow-lg section-bg-light">
+            <h2 >Underlying Science: Driving Forces & Mechanisms</h2>
+            <p>LNP formation relies on inducing controlled phase separation, templated solidification, or rapid drying.</p>
+            <ol class="list-decimal list-inside pl-4 space-y-4">
+                <li><strong>Solubility & Solvent Quality Change (Methods 1, 2, 3):</strong> Lignin solubility depends on structure/solvent ($\Delta G_{mix} < 0$ in good solvent). Poor solvent (water) or pH change reduces quality ($\Delta G_{mix} > 0$), driving aggregation.</li>
+                 <li><strong>Microemulsion Templating (Method 4):</strong> Uses stable W/O microemulsions. Nanoscale aqueous droplets with lignin act as templates. Solidification via cross-linking preserves size/shape.</li>
+                 <li><strong>Aerosol Atomization & Drying (Method 5):</strong> Atomized lignin solution droplets dry rapidly in heated reactor. Lignin solidifies within shrinking droplet. Kinetics governed by heat/mass transfer.</li>
+                <li><strong>Solvent/pH Exchange/Drying Rates:</strong> Dialysis (1) = slow diffusion. Rapid Precipitation (2) = fast mixing. pH Change (3) = depends on rate. Aerosol (5) = fast drying.</li>
+                <li><strong>Nucleation & Growth vs. Templating vs. Drying Kinetics:</strong> Methods 1, 2, 3: Supersaturation $\rightarrow$ nucleation $\rightarrow$ growth/aggregation. Method 4: Template size + cross-linking kinetics. Method 5: Precipitation within shrinking droplet. Fractionation affects nucleation/growth in Methods 1, 2, 3.</li>
+                <li><strong>Colloidal Stabilization:</strong> Formed LNPs need stability (electrostatic/steric, DLVO). Crucial post-synthesis. Method 4 uses surfactants; Method 5 needs redispersion. Fractionation impacts surface properties/stability.</li>
+            </ol>
+        </section>
+        <section id="dialysis-proc" class="mb-16 p-8 rounded-lg shadow-lg section-bg-white">
+            <h2 >Method 1: Detailed Protocol - LNP Synthesis via Dialysis</h2>
+            <p>Controlled solvent exchange via dialysis, based on <a href="https://doi.org/10.1039/C5GC01431E" target="_blank" rel="noopener noreferrer">Lievonen et al. (2015/2016)</a>. Suitable for unfractionated or fractionated lignin.</p>
+            <h3>1.1 Materials & Reagents</h3>
+             <ul class="list-disc list-inside pl-4 mb-6 text-sm space-y-2"><li><strong>Lignin Source:</strong> e.g., Kraft Lignin (whole or fractionated E/A/T-Frac). Characterized/dried.</li><li><strong>Organic Solvent:</strong> THF (or EG for variation).</li><li><strong>Non-Solvent:</strong> DI Water/Milli-Q.</li><li><strong>Dialysis Membrane:</strong> RC tubing, MWCO 12-14 kDa.</li></ul>
+            <h3>1.2 Equipment</h3>
+             <ul class="list-disc list-inside pl-4 mb-6 text-sm space-y-2"><li>Standard lab equipment as previously listed.</li></ul>
+            <h3>1.3 Procedure</h3>
+              <ol class="list-decimal list-inside pl-6 space-y-4"><li><strong>Lignin Solution (e.g., 5 mg/mL):</strong> Prepare filtered solution of chosen lignin (whole/fraction) in THF.</li><li><strong>Membrane Prep:</strong> Rinse/soak RC tubing.</li><li><strong>Loading:</strong> Clamp end 1. Add 10.0 mL solution. Clamp end 2. Check seals. Rinse outside.</li><li><strong>Dialysis:</strong> Submerge bag in ~1.5 L DI water. Gentle stirring. Water changes (Total 48-72h). Observe turbidity.</li><li><strong>Collection:</strong> Collect dispersion. Store 4°C.</li><li><strong>Characterization:</strong> DLS/Zeta.</li></ol>
+              <div class="critical-note"><strong>Variations & Notes:</strong>
+                <ul><li><strong>Frangville et al. (2012, Method A):</strong> Precipitate from EG with slow HCl addition, then dialyze. Optional cross-linking.</li><li><strong>Richter et al. (2016):</strong> Flash precipitate from EG with rapid HNO$_3$. Monitor growth kinetics in EG *before* quenching by water dilution.</li><li><strong>Venditti et al. (2021):</strong> Demonstrated significant differences in LNP size/stability when using E-Frac, A-Frac, or T-Frac in similar solvent-shift protocols.</li></ul></div>
+              <div class="safety-note"><strong>Safety:</strong> THF flammable/irritant. EG requires care. Use fume hood.</li>
+        </section>
+        <section id="precipitation-lw-proc" class="mb-16 p-8 rounded-lg shadow-lg section-bg-white">
+            <h2 >Method 2: Detailed Protocol - LNP Synthesis via Rapid Precipitation (Lignin → Water)</h2>
+            <p>Rapid addition of lignin solution to non-solvent. Fast, less controlled. Suitable for various lignins/solvents (e.g., HPL/Acetone, Kraft/THF, or fractions thereof).</p>
+             <h3>2.1 Materials & Reagents</h3>
+             <ul class="list-disc list-inside pl-4 mb-6 text-sm space-y-2"><li><strong>Lignin Source:</strong> e.g., Kraft, HPL (whole or fractionated).</li><li><strong>Organic Solvent:</strong> e.g., THF, Acetone, Ethanol (match lignin/fraction solubility).</li><li><strong>Non-Solvent:</strong> DI Water/Milli-Q.</li></ul>
+            <h3>2.2 Equipment</h3>
+             <ul class="list-disc list-inside pl-4 mb-6 text-sm space-y-2"><li>Standard lab equipment. Syringe pump useful for rate control.</li></ul>
+            <h3>2.3 Procedure</h3>
+              <ol class="list-decimal list-inside pl-6 space-y-4"><li><strong>Lignin Solution:</strong> Prepare filtered solution (e.g., 0.5-10 g/L or 0.1-3 wt%).</li><li><strong>Non-Solvent Bath:</strong> Place water in beaker (e.g., 10:1 water:solvent ratio). Vigorous stirring (>700 rpm).</li><li><strong>Rapid Addition:</strong> Inject lignin solution rapidly into stirred water. Control rate (1-1100 mL/min) to influence size (<a href="https://doi.org/10.1021/acs.langmuir.6b01088" target="_blank" rel="noopener noreferrer">Richter et al. 2016</a>). Observe turbidity.</li><li><strong>Solvent Evaporation:</strong> Leave stirring uncovered in fume hood to evaporate organic solvent.</li><li><strong>Collection:</strong> Transfer dispersion. Store 4°C.</li><li><strong>Characterization:</strong> DLS/Zeta. Size tunable by conc./rate. Morphology depends on lignin fraction (<a href="https://doi.org/10.1039/d0gc03632c" target="_blank" rel="noopener noreferrer">Venditti et al. 2021</a>).</li></ol>
+              <div class="critical-note"><strong>Challenge:</strong> Rapid kinetics sensitive to mixing, rate, temp, conc., lignin fraction. Stabilization critical.</li>
+               <div class="safety-note"><strong>Safety Reminder:</strong> Handle organic solvents in fume hood.</li>
+        </section>
+        <section id="precipitation-ph-proc" class="mb-16 p-8 rounded-lg shadow-lg section-bg-white">
+            <h2 >Method 3: Detailed Protocol - LNP Synthesis via Acid Precipitation from High pH</h2>
+            <p>Aqueous route yielding pH-sensitive LNPs, based on Method B by <a href="https://doi.org/10.1002/cphc.201200537" target="_blank" rel="noopener noreferrer">Frangville et al. (2012)</a>.</p>
+             <h3>3.1 Materials & Reagents</h3>
+             <ul class="list-disc list-inside pl-4 mb-6 text-sm space-y-2"><li><strong>Lignin Source:</strong> Low-sulfonated Kraft Lignin.</li><li><strong>Base:</strong> 1 M NaOH.</li><li><strong>Acid:</strong> 0.25 M HNO$_3$.</li><li><strong>Water:</strong> DI Water/Milli-Q.</li></ul>
+            <h3>3.2 Equipment</h3>
+             <ul class="list-disc list-inside pl-4 mb-6 text-sm space-y-2"><li>Standard lab equipment + pH meter.</li></ul>
+            <h3>3.3 Procedure</h3>
+              <ol class="list-decimal list-inside pl-6 space-y-4"><li><strong>High-pH Stock (~7.7 wt%):</strong> Dissolve lignin in water by gradually adding 1 M NaOH to pH ~11.4-11.5. Adjust final volume.</li><li><strong>Working Solution (~0.05 wt%):</strong> Dilute stock with water.</li><li><strong>Acid Precipitation:</strong> Stir working solution. Rapidly add calculated acid volume (e.g., 0.9mL 0.25M HNO$_3$ per 10mL). Final pH ~2.</li><li><strong>Collection:</strong> Store low-pH dispersion at 4°C. Optional washing via centrifugation/resuspension in acidic water.</li><li><strong>Characterization:</strong> DLS/Zeta at low pH.</li></ol>
+              <div class="critical-note"><strong>pH Sensitivity:</strong> LNPs stable only at low pH (< 4-5).</li>
+              <div class="safety-note"><strong>Handle Base/Acid Safely!</strong></li>
+        </section>
+        <section id="microemulsion-proc" class="mb-16 p-8 rounded-lg shadow-lg section-bg-white">
+            <h2 >Method 4: Detailed Protocol - LNP Synthesis via Microemulsion Templating</h2>
+            <p>Using W/O microemulsions as templates, based on <a href="https://doi.org/10.1039/c4sm02851a" target="_blank" rel="noopener noreferrer">Nypelö, Carrillo, and Rojas (2015)</a>.</p>
+            <h3>4.1 Materials & Reagents</h3>
+             <ul class="list-disc list-inside pl-4 mb-6 text-sm space-y-2"><li><strong>Lignin Source:</strong> Kraft Lignin (low $M_w$).</li><li><strong>Oil Phase:</strong> Octane.</li><li><strong>Surfactant Mix:</strong> Span® 80, Tween® 80, 1-Pentanol (e.g., ratio 2:1.2:0.9).</li><li><strong>Aqueous Phase Base:</strong> 1 M NaOH.</li><li><strong>Cross-linker:</strong> Epichlorohydrin.</li><li><strong>Water:</strong> DI Water/Milli-Q (washing).</li></ul>
+            <h3>4.2 Equipment</h3>
+             <ul class="list-disc list-inside pl-4 mb-6 text-sm space-y-2"><li>Standard lab equipment + Thermostated bath, Centrifuge.</li></ul>
+            <h3>4.3 Procedure</h3>
+              <ol class="list-decimal list-inside pl-6 space-y-4"><li><strong>Surfactant/Oil Phase:</strong> Prepare surfactant mix. Dissolve in octane (e.g., 5-15 vol% final).</li><li><strong>Aqueous Lignin Phase:</strong> Dissolve lignin in 1 M NaOH (e.g., 20 wt%).</li><li><strong>Form W/O Microemulsion:</strong> Gently add aqueous phase (e.g., 1-5 vol%) to oil phase. Mix gently until clear.</li><li><strong>Cross-linking:</strong> Add epichlorohydrin (e.g., 1:1 ratio) slowly. Stir 15 min room temp. Heat (e.g., 55°C), stir gently (e.g., 40 min).</li><li><strong>Separation/Washing:</strong> Cool. Add excess DI water, mix. Centrifuge (e.g., 9000 rpm, 20 min). Discard top oil layer. Resuspend particles in DI water. Repeat wash (3-5x).</li><li><strong>Collection:</strong> Collect aqueous dispersion. Store 4°C.</li><li><strong>Characterization:</strong> DLS/Zeta, SEM/TEM.</li></ol>
+              <div class="critical-note"><strong>Microemulsion Nuances:</strong> Requires stable microemulsion. Cross-linking critical. Size templated.</li>
+              <div class="safety-note"><strong>Safety:</strong> Handle octane, pentanol, epichlorohydrin (toxic) in fume hood.</li>
+              <h3 class="!mt-12">Conceptual Visualization: Microemulsion Templating</h3>
+              <div class="visualization-container">
+                  <div class="vis-stage"><div class="vis-label">1. W/O Microemulsion</div><div class="microemulsion-vis" title="Oil phase containing aqueous droplets with dissolved lignin"><div class="me-droplet">L</div><div class="me-droplet">L</div><div class="me-droplet">L</div><div class="me-droplet">L</div><div class="me-droplet">L</div><div class="me-droplet">L</div><div class="me-droplet">L</div><div class="me-droplet">L</div><div class="me-droplet">L</div></div></div>
+                  <div class="vis-arrow">➔</div>
+                   <div class="vis-stage"><div class="vis-label">2. Cross-linking</div><div class="microemulsion-vis" title="Cross-linker reacts inside droplets"><div class="me-droplet">L<span class="text-red-600 font-bold">x</span></div><div class="me-droplet">L<span class="text-red-600 font-bold">x</span></div><div class="me-droplet">L<span class="text-red-600 font-bold">x</span></div><div class="me-droplet">L<span class="text-red-600 font-bold">x</span></div><div class="me-droplet">L<span class="text-red-600 font-bold">x</span></div><div class="me-droplet">L<span class="text-red-600 font-bold">x</span></div><div class="me-droplet">L<span class="text-red-600 font-bold">x</span></div><div class="me-droplet">L<span class="text-red-600 font-bold">x</span></div><div class="me-droplet">L<span class="text-red-600 font-bold">x</span></div></div></div>
+                  <div class="vis-arrow">➔</div>
+                  <div class="vis-stage"><div class="vis-label">3. Separation/Washing</div><div class="solid-particles-vis" title="Solid lignin particles dispersed in water"><div class="solid-particle"></div><div class="solid-particle"></div><div class="solid-particle"></div><div class="solid-particle"></div><div class="solid-particle"></div><div class="solid-particle"></div><div class="solid-particle"></div><div class="solid-particle"></div><div class="solid-particle"></div></div></div>
+              </div>
+        </section>
+         <section id="aerosol-proc" class="mb-16 p-8 rounded-lg shadow-lg section-bg-white">
+            <h2 >Method 5: Detailed Protocol - LNP Synthesis via Aerosol Flow Reactor</h2>
+            <p>High-throughput synthesis of dry, spherical lignin particles, based on <a href="https://doi.org/10.1021/acsami.6b07900" target="_blank" rel="noopener noreferrer">Ago et al. (2016)</a>.</p>
+            <h3>5.1 Materials & Reagents</h3>
+             <ul class="list-disc list-inside pl-4 mb-6 text-sm space-y-2"><li><strong>Lignin Source:</strong> Kraft, Organosolv, Alkali Lignin.</li><li><strong>Solvent:</strong> DMF (Kraft/Organosolv); Water (Alkali).</li><li><strong>Carrier Gas:</strong> N$_2$.</li><li><strong>Dilution Gas:</strong> Air (filtered).</li></ul>
+            <h3>5.2 Equipment</h3>
+             <ul class="list-disc list-inside pl-4 mb-6 text-sm space-y-2"><li>Aerosol Flow Reactor System: Atomizer, MFCs, Heated Flow Tube Reactor, Cooling/Dilution Section, Particle Collection (Impactor/Filter), Vacuum Pump.</li><li>Standard lab equipment.</li></ul>
+            <h3>5.3 Procedure</h3>
+              <ol class="list-decimal list-inside pl-6 space-y-4"><li><strong>Lignin Solution:</strong> Dissolve lignin (e.g., 0.5-2 wt%) in appropriate solvent.</li><li><strong>System Setup:</strong> Assemble reactor. Set furnace temp (e.g., 100°C water, 153°C DMF). Set gas flows (e.g., N$_2$ 3 L/min, Air 30 L/min). Stabilize.</li><li><strong>Atomization:</strong> Feed lignin solution to atomizer.</li><li><strong>Drying:</strong> Aerosol passes through heated tube, solvent evaporates.</li><li><strong>Cooling & Dilution:</strong> Mix aerosol with dilution air.</li><li><strong>Collection:</strong> Collect dry particles using BLPI (size fractionation) or filter.</li><li><strong>Retrieval:</strong> Retrieve dry particles. Store.</li><li><strong>Characterization:</strong> Analyze dry (SEM/TEM) and redispersed particles (DLS/Zeta).</li></ol>
+              <div class="critical-note"><strong>Aerosol Advantages/Challenges:</strong> (+) High throughput, dry product, size fractionation; (-) Specialized equipment, optimization needed, potential thermal effects.</div>
+              <div class="safety-note"><strong>Safety:</strong> DMF toxic. High temps/gases. Follow protocols.</li>
+               <h3 class="!mt-12">Conceptual Visualization: Aerosol Flow Reactor</h3>
+               <div class="visualization-container">
+                   <div class="vis-stage"><div class="vis-label">1. Atomization</div><div class="aerosol-vis" title="Lignin solution atomized"><div class="aerosol-nozzle"></div><div class="aerosol-droplet" style="left: 45%; top: 25%; animation-delay: 0s;"></div><div class="aerosol-droplet" style="left: 55%; top: 28%; animation-delay: 0.1s;"></div><div class="aerosol-droplet" style="left: 50%; top: 32%; animation-delay: 0.2s;"></div></div></div>
+                   <div class="vis-arrow">➔</div>
+                    <div class="vis-stage"><div class="vis-label">2. Drying in Reactor</div><div class="aerosol-vis" title="Solvent evaporates"><div style="width: 80%; height: 70%; border: 2px solid #ef4444; margin-top: 10px; position:relative; background: linear-gradient(to bottom, #fee2e2, #fecaca); border-radius: 4px;"><div class="aerosol-droplet" style="left: 40%; top: 60%; animation: none; transform: scale(0.6); background-color: var(--primary-color); opacity: 0.7;"></div><div class="aerosol-droplet" style="left: 60%; top: 70%; animation: none; transform: scale(0.5); background-color: var(--primary-color); opacity: 0.6;"></div><div class="aerosol-droplet" style="left: 50%; top: 80%; animation: none; transform: scale(0.4); background-color: var(--primary-color); opacity: 0.5;"></div></div></div></div>
+                   <div class="vis-arrow">➔</div>
+                   <div class="vis-stage"><div class="vis-label">3. Collection</div><div class="aerosol-vis" title="Dry solid particles collected"><div style="width: 80%; height: 15px; background-color: #9ca3af; margin-top: auto; border-radius: 2px; position:relative;"><div class="solid-particle" style="width:8px; height:8px; position:absolute; bottom: 2px; left: 20%;"></div><div class="solid-particle" style="width:6px; height:6px; position:absolute; bottom: 2px; left: 45%;"></div><div class="solid-particle" style="width:10px; height:10px; position:absolute; bottom: 2px; left: 70%;"></div></div></div></div>
+               </div>
+        </section>
+        <section id="comparison-sim" class="mb-16 p-8 rounded-lg shadow-lg section-bg-light dynamic-content">
+            <h2 >Process Dynamics: Dialysis vs. Rapid Precipitation Simulations</h2>
+            <p>These simulations conceptually illustrate kinetic differences between slow dialysis (Method 1) and rapid precipitation (Method 2 variants). Adjust parameters and observe trends. (Note: Methods 3, 4, 5 follow different primary mechanisms not directly comparable in this kinetic simulation).</p>
+             <div class="interactive-block">
+                <h3 class="text-center !mt-0 !border-b-0">Comparative Simulation Controls (Methods 1 & 2)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 mb-6">
+                    <div><div class="slider-label"><label for="sim-conc-slider">Initial Lignin Conc. ($C_{Lignin}$, mg/mL):</label><span id="sim-conc-value">5.0</span></div><input type="range" id="sim-conc-slider" min="1" max="20" value="5.0" step="0.5"></div>
+                    <div><div class="slider-label"><label for="sim-rate-slider">Addition Rate / Intensity:</label><span id="sim-rate-value">5</span></div><input type="range" id="sim-rate-slider" min="1" max="10" value="5" step="1"></div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8">
+                    <div class="simulation-container" id="sim-dialysis"><div class="simulation-title">1. Dialysis (Method 1)</div><div class="simulation-visual-area" style="background-color: var(--accent-blue-light);"><div class="dialysis-sim-bag"><div class="particle-area" id="dialysis-particles"></div></div></div><div class="sim-button-container"><button id="run-dialysis-btn">Run Dialysis Sim</button></div></div>
+                    <div class="simulation-container" id="sim-lignin-to-water"><div class="simulation-title">2. Rapid Precip. (L→W, Method 2)</div><div class="simulation-visual-area" id="sim-lignin-to-water-visual-area"><div class="particle-area" id="lignin-to-water-particles"></div></div><div class="sim-button-container"><button id="run-lignin-to-water-btn">Run L→W Sim</button></div></div>
+                    <div class="simulation-container" id="sim-water-to-lignin"><div class="simulation-title">3. Rapid Precip. (W→L, Alt. Method 2)</div><div class="simulation-visual-area" id="sim-water-to-lignin-visual-area" style="background-color: rgba(251, 191, 36, 0.1);"><div class="particle-area" id="water-to-lignin-particles"></div></div><div class="sim-button-container"><button id="run-water-to-lignin-btn">Run W→L Sim</button></div></div>
+                </div>
+                 <div id="sim-error" class="error-text" style="min-height: 1.5rem;"></div>
+                <h4 class="mt-12">Interpreting Simulation Outcomes (Conceptual Trends - Methods 1 & 2):</h4>
+                 <ul class="list-disc list-inside pl-4 mb-4 space-y-2 text-base"><li><strong>Dialysis:</strong> Slow, gradual appearance of smaller, more uniform particles.</li><li><strong>Lignin → Water Precipitation:</strong> Rapid formation near addition point; larger particles, more aggregation.</li><li><strong>Water → Lignin Precipitation:</strong> Rapid, bulk formation; also prone to large size/aggregation.</li><li><strong>Concentration & Rate Effects:</strong> Higher conc./rate $\rightarrow$ larger size/aggregation in precipitation.</li></ul>
+            </div>
+        </section>
+        <section id="characterization" class="mb-16 p-8 rounded-lg shadow-lg section-bg-white">
+            <h2 >Essential Characterization: Rigorous Analysis of LNPs</h2>
+            <p>Comprehensive characterization is non-negotiable across all synthesis routes.</p>
+             <ul class="list-disc list-inside pl-4 mb-4 space-y-3"><li><strong>DLS:</strong> $D_h$ & PDI. Compare methods. Assess redispersibility (Method 5).</li><li><strong>Zeta Potential:</strong> Stability vs pH/ionic strength. Compare profiles. Note Method 3 sensitivity. Method 4/5 depend on residuals/medium/surface.</li><li><strong>EM (TEM/SEM):</strong> Morphology, size, aggregation. Check Method 5 integrity post-redispersion. Method 4 porosity.</li><li><strong>AFM:</strong> 3D topography, surface texture.</li><li><strong>Spectroscopy (FTIR/NMR):</strong> Chemical fidelity, residuals. Check thermal effects (Method 5).</li><li><strong>Chromatography (SEC/GPC):</strong> MW integrity (degradation/fractionation). Crucial if using fractionated lignin.</li><li><strong>Quantification:</strong> Yield comparison. Method 5 yield from dry mass.</li><li><strong>Method 4 Specifics:</strong> Analyze residual surfactants, confirm cross-linking.</li><li><strong>Method 5 Specifics:</strong> Thermal analysis (TGA/DSC), Surface analysis (XPS).</li></ul>
+             <div class="critical-note"><strong>Holistic Comparison:</strong> Evaluate methods based on size, PDI, yield, reproducibility, stability, purity, scalability, speed, safety, environmental impact, suitability for modification (e.g., PDAC coating), and compatibility with starting material (whole vs. fractionated lignin).</div>
+        </section>
+         <section id="comparison-outlook" class="mb-16 p-8 rounded-lg shadow-lg section-bg-light">
+            <h2 >Comprehensive Comparison & Outlook</h2>
+            <p>Choosing the optimal LNP synthesis method requires careful consideration of the trade-offs. The table below provides a comparative summary of the five methods discussed:</p>
+            <div class="overflow-x-auto">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Method 1: Dialysis</th>
+                            <th>Method 2: Rapid Precip. (L→W / W→L)</th>
+                            <th>Method 3: pH Precip. (High→Low)</th>
+                            <th>Method 4: Microemulsion Templating</th>
+                            <th>Method 5: Aerosol Flow Reactor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Principle</strong></td><td>Slow solvent diffusion</td><td>Rapid solvent mixing</td><td>Rapid pH change</td><td>W/O template + cross-linking</td><td>Atomization + rapid drying</td></tr>
+                        <tr><td><strong>Solvent System</strong></td><td>Org/Water</td><td>Org/Water</td><td>Aqueous</td><td>Oil/Water/Surfactant</td><td>Org or Water</td></tr>
+                        <tr><td><strong>Lignin Input</strong></td><td>Whole or Fractionated</td><td>Whole or Fractionated</td><td>Whole (low sulfonation)</td><td>Whole (low MW)</td><td>Whole or Fractionated</td></tr>
+                        <tr><td><strong>Typical Size</strong></td><td>~50-300 nm</td><td>~50-500+ nm</td><td>~50-200 nm</td><td>~90 nm - 1 µm</td><td>~30 nm - 2 µm</td></tr>
+                        <tr><td><strong>PDI Control</strong></td><td>Good</td><td>Poor</td><td>Moderate</td><td>Good (template)</td><td>Good (fractionation)</td></tr>
+                        <tr><td><strong>Speed</strong></td><td>Slow (days)</td><td>Fast (sec/min)</td><td>Fast (sec/min)</td><td>Moderate (hrs)</td><td>Very Fast (continuous)</td></tr>
+                        <tr><td><strong>Throughput</strong></td><td>Low</td><td>Moderate</td><td>Moderate</td><td>Moderate</td><td>High</td></tr>
+                        <tr><td><strong>Product Form</strong></td><td>Aqueous Dispersion</td><td>Aqueous Dispersion</td><td>Aqueous Dispersion (low pH)</td><td>Aqueous Dispersion</td><td>Dry Powder</td></tr>
+                        <tr><td><strong>Advantages</strong></td><td>Good size/PDI control</td><td>Fast, simple setup</td><td>Aqueous route, pH-responsive</td><td>Good size control, functionalization potential</td><td>High throughput, dry product, size fractionation</td></tr>
+                        <tr><td><strong>Disadvantages</strong></td><td>Slow, scaling difficult, membrane needed</td><td>Poor control, high PDI, aggregation risk</td><td>Limited pH stability</td><td>Multi-step, surfactants, washing needed</td><td>Specialized equip., thermal effects?, redispersion needed</td></tr>
+                        <tr><td><strong>Key Refs</strong></td><td>Lievonen '16, Frangville '12, Richter '16, Venditti '21</td><td>Richter '16, Venditti '21</td><td>Frangville '12</td><td>Nypelö '15</td><td>Ago '16</td></tr>
+                    </tbody>
+                </table>
+            </div>
+             <h4 class="mt-8">Outlook & Future Directions</h4>
+             <p>The choice depends heavily on the desired outcome and application constraints. For precise size/PDI control in aqueous dispersion, Methods 1 & 4 are strong. For speed, Method 2 is simple but uncontrolled. Method 3 offers unique pH-responsiveness. For high-throughput production of dry, size-fractionated powders, Method 5 is superior. Key research directions include:</p>
+             <ul class="list-disc list-inside pl-4 mb-4 space-y-2">
+                 <li>Developing robust, scalable methods combining speed & control (e.g., flow chemistry, optimized aerosol reactors).</li>
+                 <li>Establishing clear structure-property-function relationships linking lignin source/fraction to LNP characteristics.</li>
+                 <li>Advanced surface functionalization strategies compatible with different synthesis routes.</li>
+                 <li>Comparative biological interaction, toxicology, and environmental fate studies.</li>
+                 <li>Leveraging unique features: dry powder handling (Method 5), pH-response (Method 3), template functionalization (Method 4).</li>
+             </ul>
+             <p>By mastering these diverse synthesis strategies and understanding the critical role of the lignin source material, you are well-equipped to design and optimize lignin nanomaterials for innovative sustainable applications.</p>
+        </section>
+    </main>
+     <footer class="mt-16 pt-10 pb-8 border-t border-gray-300 text-sm text-gray-600">
+           <p class="footer-attribution">PhD Comprehensive Guide | Sustainable Materials Research</p>
+           <p class="footer-attribution">
+               References & Core Concepts Based On:
+               <a href="https://doi.org/10.1039/C5GC01431E" target="_blank" rel="noopener noreferrer" class="font-medium">Lievonen et al. (2016)</a> |
+               <a href="https://doi.org/10.1002/cphc.201200537" target="_blank" rel="noopener noreferrer" class="font-medium">Frangville et al. (2012)</a> |
+               <a href="https://doi.org/10.1039/c4sm02851a" target="_blank" rel="noopener noreferrer" class="font-medium">Nypelö et al. (2015)</a> |
+               <a href="https://doi.org/10.1021/acsami.6b07900" target="_blank" rel="noopener noreferrer" class="font-medium">Ago et al. (2016)</a> |
+               <a href="https://doi.org/10.1021/acs.langmuir.6b01088" target="_blank" rel="noopener noreferrer" class="font-medium">Richter et al. (2016)</a> |
+               <a href="https://doi.org/10.1039/d0gc03632c" target="_blank" rel="noopener noreferrer" class="font-medium">Venditti et al. (2021)</a> |
+               General Colloid & Polymer Science Principles.
+           </p>
+     </footer>
+    <script>
+        function setupSlider(sliderId, valueSpanId, options = {}) {
+            const slider = document.getElementById(sliderId); const valueSpan = document.getElementById(valueSpanId);
+            if (!slider) { return; } if (!valueSpan) { }
+            const formatFunc = options.format || ((val) => parseFloat(val).toFixed(options.decimals === undefined ? 1 : options.decimals));
+            const valueAttr = options.valueAttr || 'value';
+            const updateDisplay = () => { if (valueSpan) { valueSpan.textContent = formatFunc(slider[valueAttr]); } };
+            if (options.initialValue !== undefined) { slider.value = options.initialValue; }
+            slider.addEventListener('input', updateDisplay); updateDisplay();
+        }
+        let simConcentration = 5.0; let simRate = 5; let currentTimeoutId = null;
+        function updateSimParameters() {
+            const concSlider = document.getElementById('sim-conc-slider'); const rateSlider = document.getElementById('sim-rate-slider');
+            if (concSlider) simConcentration = parseFloat(concSlider.value); if (rateSlider) simRate = parseFloat(rateSlider.value);
+        }
+        function createParticle(container, options = {}) {
+             if (!container) { return null; }
+            const particle = document.createElement('div'); particle.classList.add('sim-particle');
+            const size = options.size || 5; const x = Math.min(95, Math.max(5, options.x || Math.random() * 90 + 5)); const y = Math.min(95, Math.max(5, options.y || Math.random() * 90 + 5));
+            const delay = options.delay || 0; const duration = options.duration || 500; const isAggregate = options.isAggregate || false;
+            particle.style.width = `${size}px`; particle.style.height = `${size}px`; particle.style.left = `${x}%`; particle.style.top = `${y}%`;
+            particle.style.transform = 'scale(0) translate(-50%, -50%)'; particle.style.transition = `transform ${duration}ms ease-out ${delay}ms, opacity ${duration}ms ease-out ${delay}ms`;
+            if (isAggregate) { particle.classList.add('sim-aggregate'); } container.appendChild(particle);
+            setTimeout(() => { requestAnimationFrame(() => { if (document.body.contains(particle)) { particle.style.opacity = '1'; particle.style.transform = 'scale(1) translate(-50%, -50%)'; } }); }, delay);
+            return particle;
+        }
+        function clearSimulation(containerId) {
+            const container = document.getElementById(containerId); if (container) { container.innerHTML = ''; }
+            const visualArea = container?.closest('.simulation-visual-area');
+             if (visualArea) { const animatedElements = visualArea.querySelectorAll('.sim-water-drop, .sim-lignin-stream'); animatedElements.forEach(el => el.remove()); }
+        }
+        function runDialysisSimulation() {
+            updateSimParameters(); const containerId = 'dialysis-particles'; clearSimulation(containerId); const container = document.getElementById(containerId); if (!container) { return; }
+            const numParticles = Math.floor(10 + simConcentration * 1.5); const baseSize = 3 + simConcentration * 0.1; const sizeVariation = 2; const maxDelay = 3000; const aggregationChance = 0.02;
+            disableSimButtons(true);
+            for (let i = 0; i < numParticles; i++) { const isAggregate = Math.random() < aggregationChance; const particleSize = baseSize + (Math.random() - 0.5) * sizeVariation; const finalSize = isAggregate ? particleSize * 1.5 : particleSize; const delay = Math.random() * maxDelay; createParticle(container, { size: finalSize, delay: delay, isAggregate: isAggregate }); }
+            if (currentTimeoutId) clearTimeout(currentTimeoutId); currentTimeoutId = setTimeout(() => disableSimButtons(false), maxDelay + 500);
+        }
+        function runWaterToLigninSimulation() {
+            updateSimParameters(); const containerId = 'water-to-lignin-particles'; clearSimulation(containerId); const container = document.getElementById(containerId); const visualArea = container?.closest('.simulation-visual-area'); if (!container || !visualArea) { return; }
+            const numEvents = Math.floor(3 + simRate / 1.5); const particlesPerEvent = Math.floor(3 + simConcentration * 1.5); const baseSize = 4 + simConcentration * 0.2; const sizeVariation = 3 + simRate * 0.3; const aggregationChance = 0.05 + simConcentration / 40 + simRate / 30; const totalDuration = 1500; const eventInterval = totalDuration / numEvents;
+            disableSimButtons(true);
+            for (let j = 0; j < numEvents; j++) { const eventDelay = j * eventInterval; const drop = document.createElement('div'); drop.classList.add('sim-water-drop'); drop.style.animation = `fall 0.8s linear ${eventDelay}ms forwards`; visualArea.appendChild(drop);
+                for (let i = 0; i < particlesPerEvent; i++) { const isAggregate = Math.random() < aggregationChance; const particleSize = baseSize + (Math.random() - 0.5) * sizeVariation; const finalSize = isAggregate ? particleSize * (1.6 + Math.random()*0.6) : particleSize; const particleDelay = eventDelay + Math.random() * eventInterval * 0.5; createParticle(container, { size: finalSize, delay: particleDelay, isAggregate: isAggregate, duration: 300 }); } }
+            if (currentTimeoutId) clearTimeout(currentTimeoutId); currentTimeoutId = setTimeout(() => disableSimButtons(false), totalDuration + 200);
+        }
+        function runLigninToWaterSimulation() {
+            updateSimParameters(); const containerId = 'lignin-to-water-particles'; clearSimulation(containerId); const container = document.getElementById(containerId); const visualArea = container?.closest('.simulation-visual-area'); if (!container || !visualArea) { return; }
+            const numEvents = Math.floor(3 + simRate / 1.5); const particlesPerEvent = Math.floor(3 + simConcentration * 1.5); const baseSize = 4 + simConcentration * 0.2; const sizeVariation = 3 + simRate * 0.3; const aggregationChance = 0.05 + simConcentration / 40 + simRate / 30; const totalDuration = 1500; const eventInterval = totalDuration / numEvents;
+            disableSimButtons(true);
+             for (let j = 0; j < numEvents; j++) { const eventDelay = j * eventInterval; const stream = document.createElement('div'); stream.classList.add('sim-lignin-stream'); stream.style.animation = `stream 0.8s linear ${eventDelay}ms forwards`; visualArea.appendChild(stream);
+                for (let i = 0; i < particlesPerEvent; i++) { const isAggregate = Math.random() < aggregationChance; const particleSize = baseSize + (Math.random() - 0.5) * sizeVariation; const finalSize = isAggregate ? particleSize * (1.6 + Math.random()*0.6) : particleSize; const particleDelay = eventDelay + Math.random() * eventInterval * 0.5 + 100; const xPos = 50 + (Math.random() - 0.5) * 40; const yPos = 70 + Math.random() * 25; createParticle(container, { size: finalSize, delay: particleDelay, isAggregate: isAggregate, duration: 300, x: xPos, y: yPos }); } }
+            if (currentTimeoutId) clearTimeout(currentTimeoutId); currentTimeoutId = setTimeout(() => disableSimButtons(false), totalDuration + 200);
+        }
+        function disableSimButtons(disable) {
+             const btn1 = document.getElementById('run-dialysis-btn'); const btn2 = document.getElementById('run-lignin-to-water-btn'); const btn3 = document.getElementById('run-water-to-lignin-btn');
+             if(btn1) btn1.disabled = disable; if(btn2) btn2.disabled = disable; if(btn3) btn3.disabled = disable;
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            setupSlider('sim-conc-slider', 'sim-conc-value', {decimals: 1, initialValue: 5.0}); setupSlider('sim-rate-slider', 'sim-rate-value', {decimals: 0, initialValue: 5});
+            document.getElementById('run-dialysis-btn')?.addEventListener('click', runDialysisSimulation); document.getElementById('run-lignin-to-water-btn')?.addEventListener('click', runLigninToWaterSimulation); document.getElementById('run-water-to-lignin-btn')?.addEventListener('click', runWaterToLigninSimulation);
+            disableSimButtons(false);
+            if (typeof MathJax !== 'undefined' && MathJax.startup) { MathJax.startup.promise.then(() => {}).catch(err => console.error('MathJax startup error:', err)); } else {}
+        });
+    </script>
+</body>
+</html>
